@@ -1,4 +1,4 @@
-    //
+//
 //  RSWebView.m
 //  RSWebView
 //
@@ -81,7 +81,7 @@
 {
     self = [super init];
     if (self) {
-        [self initWebViewWithFrame:self.frame];
+        [self initWebViewWithFrame:self.bounds];
         [self setupProgressViewAndJavascriptBridge];
     }
     return self;
@@ -90,7 +90,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        [self initWebViewWithFrame:self.frame];
+        [self initWebViewWithFrame:self.bounds];
         [self setupProgressViewAndJavascriptBridge];
     }
     return self;
@@ -102,13 +102,13 @@
     _isUsingUIWebView = !isIOS8AndGreater;
     switch (webViewType) {
         case RSWebViewTypeUIWebView:
-        _isUsingUIWebView = YES;
-        break;
+            _isUsingUIWebView = YES;
+            break;
         case RSWebViewTypeWkWebView:
-        _isUsingUIWebView = NO;
-        break;
+            _isUsingUIWebView = NO;
+            break;
         default:
-        break;
+            break;
     }
     if (_isUsingUIWebView) {
         [self initUIWebViewWithFrame:frame];
@@ -645,15 +645,15 @@
         {
             return;
         }
-
+        
         WKWebView* webView = _wKWebView;
-
+        
         NSString *jScript = @"var meta = document.createElement('meta'); \
         meta.name = 'viewport'; \
         meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; \
         var head = document.getElementsByTagName('head')[0];\
         head.appendChild(meta);";
-
+        
         if(scalesPageToFit)
         {
             //WKUserScriptInjectionTimeAtDocumentEnd说明是加载完后执行，还有WKUserScriptInjectionTimeAtDocumentStart可用

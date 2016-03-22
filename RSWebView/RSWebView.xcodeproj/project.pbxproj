@@ -132,7 +132,6 @@
 		8E6F0C251C86C81B0073B3C5 = {
 			isa = PBXGroup;
 			children = (
-				8E54EA711C88292C000C9A1B /* WebKit.framework */,
 				8E6F0C301C86C81B0073B3C5 /* RSWebView */,
 				8E6F0C4A1C86C81B0073B3C5 /* RSWebViewTests */,
 				8E6F0C551C86C81B0073B3C5 /* RSWebViewUITests */,
@@ -198,6 +197,7 @@
 		8E6F0C641C86C85A0073B3C5 /* RSWebView */ = {
 			isa = PBXGroup;
 			children = (
+				8E54EA711C88292C000C9A1B /* WebKit.framework */,
 				8E7154431C9F9947000A8BB0 /* Third */,
 				8E8EE5031C916918006094A1 /* BBWebViewSSLProtocol.h */,
 				8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */,
