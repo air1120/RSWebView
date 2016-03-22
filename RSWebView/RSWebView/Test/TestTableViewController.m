@@ -100,7 +100,10 @@
     // Create the next view controller.
     NSString *selName = ex.methodNames[indexPath.row];
     if ([ex respondsToSelector:NSSelectorFromString(selName)]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [ex performSelector:NSSelectorFromString(selName) withObject:nil];
+#pragma clang diagnostic pop
     }
 }
 

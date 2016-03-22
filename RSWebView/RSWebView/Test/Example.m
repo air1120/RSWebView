@@ -98,7 +98,7 @@
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     navController.modalTransitionStyle =UIModalTransitionStyleCrossDissolve;
     // show the navigation controller modally
-    [self.viewController presentModalViewController:navController animated:NO];
+    [self.viewController presentViewController:navController animated:NO completion:nil];
     
     //    webView = [self iniWebView];
     
@@ -134,7 +134,7 @@
     navController.modalPresentationStyle = UIModalPresentationFormSheet;
     navController.modalTransitionStyle =UIModalTransitionStyleCrossDissolve;
     // show the navigation controller modally
-    [self.viewController presentModalViewController:navController animated:NO];
+    [self.viewController presentViewController:navController animated:NO completion:nil];
     
     //    webView = [self iniWebView];
     

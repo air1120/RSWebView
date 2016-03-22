@@ -12,7 +12,6 @@
 		8E54EA721C88292C000C9A1B /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8E54EA711C88292C000C9A1B /* WebKit.framework */; };
 		8E6F0C331C86C81B0073B3C5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F0C321C86C81B0073B3C5 /* main.m */; };
 		8E6F0C361C86C81B0073B3C5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F0C351C86C81B0073B3C5 /* AppDelegate.m */; };
-		8E6F0C391C86C81B0073B3C5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E6F0C381C86C81B0073B3C5 /* ViewController.m */; };
 		8E6F0C3C1C86C81B0073B3C5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F0C3A1C86C81B0073B3C5 /* Main.storyboard */; };
 		8E6F0C3E1C86C81B0073B3C5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F0C3D1C86C81B0073B3C5 /* Assets.xcassets */; };
 		8E6F0C411C86C81B0073B3C5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E6F0C3F1C86C81B0073B3C5 /* LaunchScreen.storyboard */; };
@@ -63,8 +62,6 @@
 		8E6F0C321C86C81B0073B3C5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		8E6F0C341C86C81B0073B3C5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		8E6F0C351C86C81B0073B3C5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		8E6F0C371C86C81B0073B3C5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		8E6F0C381C86C81B0073B3C5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8E6F0C3B1C86C81B0073B3C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8E6F0C3D1C86C81B0073B3C5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8E6F0C401C86C81B0073B3C5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -162,8 +159,6 @@
 				8E42F62A1C9BF42000B38284 /* air2.jpg */,
 				8E6F0C351C86C81B0073B3C5 /* AppDelegate.m */,
 				8E88924A1C8D5F7300C11C36 /* index.html */,
-				8E6F0C371C86C81B0073B3C5 /* ViewController.h */,
-				8E6F0C381C86C81B0073B3C5 /* ViewController.m */,
 				8E6F0C3A1C86C81B0073B3C5 /* Main.storyboard */,
 				8E6F0C3D1C86C81B0073B3C5 /* Assets.xcassets */,
 				8E6F0C3F1C86C81B0073B3C5 /* LaunchScreen.storyboard */,
@@ -410,7 +405,6 @@
 				8E7154571C9F9947000A8BB0 /* WebViewJavascriptBridge.m in Sources */,
 				8E7848711C97A65200778D7A /* TestTableViewController.m in Sources */,
 				8E3039FA1C87D00F00311562 /* RSWebView.m in Sources */,
-				8E6F0C391C86C81B0073B3C5 /* ViewController.m in Sources */,
 				8E7154661C9FC8DE000A8BB0 /* RSControllerTools.m in Sources */,
 				8E7154581C9F9947000A8BB0 /* WebViewJavascriptBridge_JS.m in Sources */,
 				8E6F0C361C86C81B0073B3C5 /* AppDelegate.m in Sources */,

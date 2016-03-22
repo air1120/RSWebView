@@ -257,7 +257,7 @@
 
 #pragma mark - WKUIDelegate
 
-- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)())completionHandler
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler
 {
     //    NSString *hostString = webView.URL.host;
     //    NSString *sender = [NSString stringWithFormat:messengeAlert, hostString];
@@ -412,16 +412,11 @@
     BOOL resultBOOL = YES;
     if([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
     {
-        
-        
         if(navigationType == -1) {
             navigationType = UIWebViewNavigationTypeOther;
         }
-        
-#warning 由于self.realWebView可能不是UIWebView，所以可能出问题
         resultBOOL = [self.delegate webView:self.realWebView shouldStartLoadWithRequest:request navigationType:navigationType];
     }
-    
     [self updateNavigationItems];
     return resultBOOL;
 }
@@ -877,30 +872,6 @@
     }
     return _snapShotsArray;
 }
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
-    
-    CGPoint translation = [(UIPanGestureRecognizer *)gestureRecognizer translationInView:self];
-    CGPoint location = [gestureRecognizer locationInView:self];
-    //    NSLog(@"pan x %f,pan y %f",translation.x,translation.y);
-    
-    //    if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
-    //        if (location.x <= 50 && translation.x > 0) {  //开始动画
-    //            [self startPopSnapshotView];
-    //        }
-    //    }
-    
-    //    //    AppDelegate *delegate = [UIApplication sharedApplication].delegate;
-    //    //    UINavigationController *navigationController = delegate.baseNavigationController;
-    //    //    NSParameterAssert([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]]);
-    //    CGPoint velocity = [(UIPanGestureRecognizer *)gestureRecognizer velocityInView:self];
-    //    CGPoint location = [gestureRecognizer locationInView:self];
-    //    NSLog(@"location.x %f,velocity.x %f",location.x,velocity.x);
-    ////    if (velocity.x > 0.0f&&location.x <= 50) {
-    ////        return YES;
-    ////    }
-    return YES;
-}
 #pragma mark - setters and getters
 -(UIBarButtonItem*)closeButtonItem{
     if (!_closeButtonItem) {
@@ -930,7 +901,7 @@
     //GET方法的时候，不能设置BODY
     if (webSource) {
         if (webSource.html) {
-            [self loadHTMLString:webSource.html baseURL:webSource.baseURL];
+            [self loadHTMLString:webSource.html baseURL:[NSURL URLWithString:webSource.baseURL]];
         }
         else{
             NSLog(@"the url is +++---+++ %@",webSource.url);
@@ -987,7 +958,7 @@
 
 static BOOL diagStat = NO;
 static BOOL isRuning;
--(BOOL)webView:(UIWebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
+-(void)webView:(UIWebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
     isRuning = YES;
     
     NSLog(@"webView是否主线程：%d",[NSThread isMainThread]);
@@ -998,10 +969,6 @@ static BOOL isRuning;
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
     }
-    
-    
-    
-    return YES;
 }
 
 -(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
