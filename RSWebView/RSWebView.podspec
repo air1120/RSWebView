@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'RSWebView'
-  s.version  = '1.0.0'
+  s.version  = '1.0.1'
   s.platform = :ios, '7.0'
   s.license  = 'MIT'
   s.summary  = 'UIWebView switched automatically into WKWebView'
@@ -11,11 +11,11 @@ Pod::Spec.new do |s|
 s.ios.deployment_target = '7.0'
 s.ios.frameworks = 'WebKit'
 s.description  = 'UIWebView switched automatically into WKWebView.'
-s.source_files = 'RSWebView/RSWebView/*','RSWebView/RSWebView/Third/NJKWebViewProgress/*','RSWebView/RSWebView/Third/WebViewJavascriptBridge/*'
+s.source_files = 'RSWebView/RSWebView/RSWebView/*','RSWebView/RSWebView/RSWebView/Third/NJKWebViewProgress/*','RSWebView/RSWebView/RSWebView/Third/WebViewJavascriptBridge/*'
 s.subspec "en.lproj" do |sp|
-sp.resources = 'RSWebView/RSWebView/en.lproj/*'
+sp.resources = 'RSWebView/RSWebView/RSWebView/en.lproj/*'
 end
 s.subspec "zh-Hans.lproj" do |sp|
-sp.resources = 'RSWebView/RSWebView/zh-Hans.lproj/*'
+sp.resources = 'RSWebView/RSWebView/RSWebView/zh-Hans.lproj/*'
 end
 end
