@@ -29,7 +29,7 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 @property(nonatomic, strong) NSString *body;
 @property(nonatomic, strong) NSString *html;
 @property(nonatomic, strong) NSString *baseURL;
--(id)initWithUrl:(NSString *)url method:(NSString *)method headers:(NSDictionary *)headers body:(NSString *)body;
+-(id)initWithUrl:(NSString *)url method:(NSString *)method headers:(NSDictionary *)headers body:(id)body;
 -(id)initWithHtml:(NSString *)html baseURL:(NSString *)baseURL;
 @end
 

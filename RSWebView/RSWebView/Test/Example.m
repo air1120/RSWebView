@@ -16,10 +16,16 @@
 +(void)load{
     [self loadMethod];
 }
+-(void)TestInitWithHtml{
+    [self pushView:[self iniWebView]];
+    [self doSomeThing:^{
+        _webView.webSource = [[RSWebSource alloc]initWithHtml:@"<html><div>测试</div></html>" baseURL:@""];
+    }];
+}
 -(void)TestWebSource的修改了useragent{
     [RSWebView setUserAgent:@"setUserAgent"];
     [self pushView:[self iniWebView]];
-    _webView.webSource = [[RSWebSource alloc]initWithUrl:@"http://www.baidu.com" method:@"GET" headers:nil body:nil];
+    _webView.webSource = [[RSWebSource alloc]initWithUrl:@"http://www.baidu.com" method:@"POST" headers:nil body:nil];
 }
 -(void)TestWebSource的没有修改了useragent{
 //    [RSWebView setUserAgent:nil];

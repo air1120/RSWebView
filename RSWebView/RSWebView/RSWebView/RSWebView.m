@@ -19,14 +19,30 @@
 static NSString *originalUserAgent;
 @implementation RSWebSource
 
--(id)initWithUrl:(NSString *)url method:(NSString *)method headers:(NSDictionary *)headers body:(NSString *)body{
+-(id)initWithUrl:(NSString *)url method:(NSString *)method headers:(NSDictionary *)headers body:(id)body{
     if(self = [super init]){
         self.url = url;
         self.method = method;
         self.headers = headers;
-        self.body = body;
+        if ([body isKindOfClass:[NSString class]]) {
+            self.body = body;
+        }else if([body isKindOfClass:[NSDictionary class]]) {
+            self.body = [self strirngWithDic:body];
+        }
     }
     return self;
+}
+-(NSString *)strirngWithDic:(NSDictionary *)dic{
+    NSMutableString *result = [[NSMutableString alloc]initWithString:@""];
+    for (NSString *key in dic.keyEnumerator) {
+        if (result.length==0) {
+            [result appendString:[NSString stringWithFormat:@"%@=%@",key,dic[key]]];
+        }
+        else{
+            [result appendString:[NSString stringWithFormat:@"&%@=%@",key,dic[key]]];
+        }
+    }
+    return result;
 }
 -(id)initWithHtml:(NSString *)html baseURL:(NSString *)baseURL{
     if(self = [super init]){
