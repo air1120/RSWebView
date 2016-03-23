@@ -27,6 +27,7 @@
     [RSWebView setWebViewType:RSWebViewTypeUIWebView];
     ex = [[Example alloc]init];
     ex.viewController = self;
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -34,28 +34,28 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 @end
 
 #pragma mark - 关于没有重写的方法会自动映射到相应的webView或者self.delegate直接调用，不过这时需要分别处理UIWebView和WKWebView的两种情况。
-@interface RSWebView : UIView<NJKWebViewProgressDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate,WKUIDelegate>
+@interface RSWebView : UIView<NJKWebViewProgressDelegate,UIWebViewDelegate,WKNavigationDelegate,WKUIDelegate>
 
 @property (nonatomic, strong) id realWebView;
 
-@property (nullable, nonatomic, strong) id <UIWebViewDelegate> delegate;
+@property (nullable, nonatomic, strong) id <UIWebViewDelegate,WKNavigationDelegate> delegate;
 
 @property (nonatomic, strong) UIScrollView *scrollView ;
 
 @property (nonatomic, strong) NSArray *trustedScheme;
 
 
-- (id)loadRequest:(NSURLRequest *)request;
-- (id)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;
-//- (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;
+- (void)loadRequest:(NSURLRequest *)request;
+- (void)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;
+- (void)loadData:(NSData *)data MIMEType:(NSString *)MIMEType textEncodingName:(NSString *)textEncodingName baseURL:(NSURL *)baseURL;
 
 @property (nullable, nonatomic, readonly, strong) NSURLRequest *request;
 
-- (id)reload;
+- (void)reload;
 - (void)stopLoading;
 
-- (id)goBack;
-- (id)goForward;
+- (void)goBack;
+- (void)goForward;
 
 @property (nonatomic, readonly, getter=canGoBack) BOOL canGoBack;
 @property (nonatomic, readonly, getter=canGoForward) BOOL canGoForward;
@@ -66,6 +66,7 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 @property (nonatomic) BOOL scalesPageToFit;
 
 #pragma mark - 扩展功能
++(void)setUserAgent:(NSString *)userAgent;//使用之后，需要通过[RSWebView setUserAgent:nil];来恢复
 @property (nonatomic, strong) RSWebSource *webSource;
 @property (nonatomic, assign,readonly) BOOL isUsingUIWebView;
 -(void)loadLocalFile:(NSString *)fileName baseURL:(NSString *)baseURL;

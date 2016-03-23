@@ -11,9 +11,20 @@
 #import "TesViewController.h"
 #import "RSControllerTools.h"
 #import "BBWebViewSSLProtocol.h"
+#import <objc/runtime.h>
 @implementation Example
 +(void)load{
     [self loadMethod];
+}
+-(void)TestWebSource的修改了useragent{
+    [RSWebView setUserAgent:@"setUserAgent"];
+    [self pushView:[self iniWebView]];
+    _webView.webSource = [[RSWebSource alloc]initWithUrl:@"http://www.baidu.com" method:@"GET" headers:nil body:nil];
+}
+-(void)TestWebSource的没有修改了useragent{
+//    [RSWebView setUserAgent:nil];
+    [self pushView:[self iniWebView]];
+    _webView.webSource = [[RSWebSource alloc]initWithUrl:@"http://www.baidu.com" method:@"GET" headers:nil body:nil];
 }
 -(void)TestAlert{
     [self pushView];
@@ -23,6 +34,24 @@
         NSLog(@"alert:%@",haha);
     }];
 }
+
+-(void)TestGoBack{
+    [self pushView];
+    double delayInSeconds = 5.0;
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+        NSURLRequest *req2 = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.taobao.com"]];
+        [_webView loadRequest:req2];
+        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if(_webView.canGoBack)
+                    [_webView goBack];
+            });
+            
+        });
+    });
+}
+
 -(void)TestComfirm{
     [self pushView];
     [self doSomeThing:^{
@@ -49,7 +78,6 @@
             [_webView loadRequest:req];
         }];
     }];
-    
 }
 -(void)Test加载WebViewJavascriptBridge的js{
     [self pushView];
@@ -155,31 +183,10 @@
         //        }];
     });
 }
--(void)Test20{
-    
-    [self pushView];
-    [self doSomeThing:^{
-        _webView.delegate = self;
-        
-        NSString *urlString = @"http://www.jd.com";
-        NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
-        [self doSomeThing:^{
-            [_webView loadRequest:req];
-        }];
-    }];
-}
 -(void)Test测试itunes_apple_com跳转{
-    //    [RSWebView setWebViewType:RSWebViewTypeUIWebView];
     [self pushView];
-    
-    
     [self doSomeThing:^{
-        
-        //        webView.frame = viewController.view.frame;
-        //        NSLog(@"%@",NSStringFromCGRect(webView.frame));
-        //        [viewController.view addSubview:webView];
         _webView.delegate = self;
-        
         NSString *urlString = @"https://itunes.apple.com/us/app/zhi-xing-huo-che-piao-12306gou/id651323845?mt=8";
         NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
         [self doSomeThing:^{
@@ -188,21 +195,14 @@
     }];
 }
 -(void)doSomeThing:(void (^)())block{
-    //    // 延迟2秒执行：
-    //    double delayInSeconds = 1.0;
-    //    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    //    dispatch_after(popTime, dispatch_get_global_queue(0, 0), ^(void){
-    //        block();
-    //    });
-    
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
         block();
     });
 }
 -(RSWebView *)iniWebView{
-    if (_webView) {
-        return _webView;
-    }
+//    if (_webView) {
+//        return _webView;
+//    }
     _webView = [[RSWebView alloc]initWithFrame:CGRectMake(0, 0, self.viewController.view.frame.size.width, self.viewController.view.frame.size.height)];
     _webView.delegate = self;
     return _webView;
@@ -216,15 +216,7 @@
     [vc.view addSubview:view];
     [self.viewController.navigationController pushViewController:vc animated:NO];
 }
-/*
- #pragma mark - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
- // Get the new view controller using [segue destinationViewController].
- // Pass the selected object to the new view controller.
- }
- */
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
 {
     NSLog(@"%@",@"shouldStartLoadWithRequest");
@@ -245,5 +237,10 @@
 {
     NSLog(@"%@",@"didFailLoadWithError");
 }
-
+-(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+-(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation{
+    NSLog(@"didStartProvisionalNavigation");
+}
 @end

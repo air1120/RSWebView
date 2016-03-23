@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  RSWebView
+
+  Created by rason on 16/3/22.
+  Copyright © 2016年 RasonWu. All rights reserved.
+*/
+/* Cancel */
+"Cancel" = "取消";
+/* Comfirm */
+"Comfirm" = "确定";

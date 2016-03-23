@@ -34,6 +34,7 @@
 		8E8B94A61C9A9D090020DF60 /* TesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B94A41C9A9D090020DF60 /* TesViewController.xib */; };
 		8E8EE5051C916918006094A1 /* BBWebViewSSLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */; };
 		8E99406A1C96A26700C8B93D /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 8E9940691C96A26700C8B93D /* test.js */; };
+		8EE800401CA12ED9000AC147 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EE800421CA12ED9000AC147 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,10 @@
 		8E8EE5031C916918006094A1 /* BBWebViewSSLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBWebViewSSLProtocol.h; sourceTree = "<group>"; };
 		8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWebViewSSLProtocol.m; sourceTree = "<group>"; };
 		8E9940691C96A26700C8B93D /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
+		8EE8003C1CA12E60000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		8EE8003D1CA12E60000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		8EE800411CA12ED9000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		8EE800431CA12EE9000AC147 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +208,7 @@
 				8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */,
 				8E3039F81C87D00F00311562 /* RSWebView.h */,
 				8E3039F91C87D00F00311562 /* RSWebView.m */,
+				8EE800421CA12ED9000AC147 /* Localizable.strings */,
 			);
 			path = RSWebView;
 			sourceTree = "<group>";
@@ -370,6 +376,7 @@
 				8E6F0C411C86C81B0073B3C5 /* LaunchScreen.storyboard in Resources */,
 				8E6F0C3E1C86C81B0073B3C5 /* Assets.xcassets in Resources */,
 				8E42F62B1C9BF42000B38284 /* air2.jpg in Resources */,
+				8EE800401CA12ED9000AC147 /* Localizable.strings in Resources */,
 				8E7848721C97A65200778D7A /* TestTableViewController.xib in Resources */,
 				8E6F0C3C1C86C81B0073B3C5 /* Main.storyboard in Resources */,
 				8E8B94A61C9A9D090020DF60 /* TesViewController.xib in Resources */,
@@ -452,6 +459,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				8E6F0C3B1C86C81B0073B3C5 /* Base */,
+				8EE8003C1CA12E60000AC147 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -460,8 +468,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				8E6F0C401C86C81B0073B3C5 /* Base */,
+				8EE8003D1CA12E60000AC147 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		8EE800421CA12ED9000AC147 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8EE800411CA12ED9000AC147 /* zh-Hans */,
+				8EE800431CA12EE9000AC147 /* en */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

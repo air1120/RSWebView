@@ -16,8 +16,9 @@
 #define messengeAlert @""
 #define boundsWidth self.superview.bounds.size.width
 #define boundsHeight self.superview.bounds.size.height
-
+static NSString *originalUserAgent;
 @implementation RSWebSource
+
 -(id)initWithUrl:(NSString *)url method:(NSString *)method headers:(NSDictionary *)headers body:(NSString *)body{
     if(self = [super init]){
         self.url = url;
@@ -115,6 +116,7 @@
     }else{
         [self initWKWebViewWithFrame:frame];
     }
+    
     self.scalesPageToFit = YES;
     [self addSubview:self.realWebView];
     [self setAutoresizingMask:UIViewAutoresizingFlexibleWidth|UIViewAutoresizingFlexibleHeight];
@@ -194,7 +196,7 @@
     [self callback_webViewDidFailLoadWithError:error];
     NSLog(@"请求失败:%@",error);
     if (error.code == -1009) {
-        [[[UIAlertView alloc]initWithTitle:nil message:@"请检查当前网络问题" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil]show];
+        [[[UIAlertView alloc]initWithTitle:nil message:@"请检查当前网络问题" delegate:self cancelButtonTitle:NSLocalizedString(@"Comfirm", nil) otherButtonTitles:nil, nil]show];
     }
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -239,7 +241,6 @@
         return YES;
     }
     BOOL resultBOOL = [self callback_webViewShouldStartLoadWithRequest:request navigationType:navigationType];
-    
     return resultBOOL;
 }
 - (BOOL)validateItunesUrl:(NSString *) matchee
@@ -264,7 +265,7 @@
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
     
-    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Comfirm", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         completionHandler();
     }]];
     [self.viewController presentViewController:alertController animated:YES completion:^{}];
@@ -280,11 +281,11 @@
         //textField.placeholder = defaultText;
         textField.text = defaultText;
     }];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Comfirm", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSString *input = ((UITextField *)alertController.textFields.firstObject).text;
         completionHandler(input);
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         completionHandler(nil);
     }]];
     [self.viewController presentViewController:alertController animated:YES completion:^{}];
@@ -296,10 +297,10 @@
     //    NSString *sender = [NSString stringWithFormat:messengeAlert, hostString];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Comfirm", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         completionHandler(YES);
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         completionHandler(NO);
     }]];
     [self.viewController presentViewController:alertController animated:YES completion:^{}];
@@ -327,20 +328,7 @@
         [[UIApplication sharedApplication] openURL:url];
         return;
     }
-    BOOL resultBOOL = [self callback_webViewShouldStartLoadWithRequest:navigationAction.request navigationType:navigationAction.navigationType];
-    if(resultBOOL)
-    {
-        //        self.currentRequest = navigationAction.request;
-        if(navigationAction.targetFrame == nil)
-        {
-            [webView loadRequest:navigationAction.request];
-        }
-        decisionHandler(WKNavigationActionPolicyAllow);
-    }
-    else
-    {
-        decisionHandler(WKNavigationActionPolicyCancel);
-    }
+    [self callback_webView:webView decidePolicyForNavigationAction:navigationAction decisionHandler:decisionHandler];
 }
 //用于处理ssl的认证问题
 -(void)webView:(WKWebView *)webView didReceiveAuthenticationChallenge:(NSURLAuthenticationChallenge *)challenge completionHandler:(void (^)(NSURLSessionAuthChallengeDisposition, NSURLCredential * _Nullable))completionHandler{
@@ -355,36 +343,45 @@
     }
 }
 
--(void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation
-{
-    [self callback_webViewDidStartLoad];
-}
+
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
-    [self callback_webViewDidFinishLoad];
-}
-- (void)webView:(WKWebView *) webView didFailProvisionalNavigation: (WKNavigation *) navigation withError: (NSError *) error
-{
-    [self callback_webViewDidFailLoadWithError:error];
-}
-- (void)webView: (WKWebView *)webView didFailNavigation:(WKNavigation *) navigation withError: (NSError *) error
-{
-    [self callback_webViewDidFailLoadWithError:error];
+    [self actionAfterFinish];
+    [self callback_webView:webView didFinishNavigation:navigation];
 }
 
+#pragma mark- callback_WKNavigationDelegate
+-(void)callback_webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
+{
+    if([self.delegate respondsToSelector:@selector(webView:decidePolicyForNavigationAction:decisionHandler:)])
+    {
+        [self.delegate webView:_wKWebView decidePolicyForNavigationAction:navigationAction decisionHandler:decisionHandler];
+    }else{
+        decisionHandler(WKNavigationActionPolicyAllow);
+    }
+}
+-(void)callback_webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    if ([self.delegate respondsToSelector:@selector(webView:didFinishNavigation:)]) {
+        [self.delegate webView:webView didFinishNavigation:navigation];
+    }
+}
 
 #pragma mark- 由于webView的回调,待测试
 
 - (void)callback_webViewDidFinishLoad
 {
-    [self fixViewport];
-    [self setNavigationTitle];
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [self updateNavigationItems];
+    [self actionAfterFinish];
     if([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
     {
         [self.delegate webViewDidFinishLoad:self.realWebView];
     }
+}
+-(void)actionAfterFinish{
+    [self fixViewport];
+    [self setNavigationTitle];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self updateNavigationItems];
 }
 - (void)fixViewport{
     CGFloat width = self.bounds.size.width;
@@ -459,88 +456,6 @@
 }
 
 #pragma mark - UIWebView和WKWebView公有部分处理
--(UIScrollView *)scrollView{
-    return [self.realWebView scrollView];
-}
-- (id)loadRequest:(NSURLRequest *)request{
-    if(_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView loadRequest:request];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView loadRequest:request];
-    }
-}
-- (id)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL
-{
-    if(_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView loadHTMLString:string baseURL:baseURL];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView loadHTMLString:string baseURL:baseURL];
-    }
-}
--(NSURLRequest *)request{
-    return [self.realWebView request];
-}
-- (id)reload
-{
-    if(_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView reload];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView reload];
-    }
-}
-- (void)stopLoading
-{
-    [self.realWebView stopLoading];
-}
-
-- (id)goBack
-{
-    if(_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView goBack];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView goBack];
-    }
-}
-- (id)goForward
-{
-    if(_isUsingUIWebView)
-    {
-        [(UIWebView*)self.realWebView goForward];
-        return nil;
-    }
-    else
-    {
-        return [(WKWebView*)self.realWebView goForward];
-    }
-}
--(BOOL)canGoBack
-{
-    return [self.realWebView canGoBack];
-}
--(BOOL)canGoForward
-{
-    return [self.realWebView canGoForward];
-}
--(BOOL)isLoading
-{
-    return [self.realWebView isLoading];
-}
 
 -(NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)javaScriptString
 {
@@ -551,11 +466,11 @@
     else
     {
         __block NSString* result = nil;
-        __block BOOL isRunning = NO;
+        __block BOOL isRunning = YES;
         dispatch_async(dispatch_get_main_queue(), ^{
             [(WKWebView*)self.realWebView evaluateJavaScript:javaScriptString completionHandler:^(id obj, NSError *error) {
                 result = obj;
-                isRunning = YES;
+                isRunning = NO;
             }];
         });
         NSRunLoop *runLoop = [[NSRunLoop alloc]init];
@@ -685,11 +600,11 @@
     BOOL hasResponds = [super respondsToSelector:aSelector];
     if(hasResponds == NO)
     {
-        hasResponds = [self.delegate respondsToSelector:aSelector];
+        hasResponds = [self.realWebView respondsToSelector:aSelector];
     }
     if(hasResponds == NO)
     {
-        hasResponds = [self.realWebView respondsToSelector:aSelector];
+        hasResponds = [self.delegate respondsToSelector:aSelector];
     }
     return hasResponds;
 }
@@ -896,6 +811,19 @@
         return self.viewController.navigationController;
     }
 }
++(void)setUserAgent:(NSString *)userAgent{
+    if(userAgent!=nil){
+        if (!originalUserAgent) {
+            UIWebView* tempWebView = [[UIWebView alloc] initWithFrame:CGRectZero];
+            originalUserAgent = [tempWebView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+        }
+        NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:userAgent, @"UserAgent", nil];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
+    }
+    else if(originalUserAgent){
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : originalUserAgent}];
+    }
+}
 -(void)setWebSource:(RSWebSource *)webSource{
     _webSource = webSource;
     //GET方法的时候，不能设置BODY
@@ -908,16 +836,21 @@
             NSURL * _url = [NSURL URLWithString:webSource.url];
             NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:_url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
             [request setAllHTTPHeaderFields:webSource.headers];
-            if(webSource.headers && [webSource.headers valueForKey:@"user-agent"]){
-                NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:[webSource.headers valueForKey:@"user-agent"], @"UserAgent", nil];
-                [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
-            }
+//            if(webSource.headers && [webSource.headers valueForKey:@"user-agent"]){
+//                if (!originalUserAgent) {
+//                    originalUserAgent = [self stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+//                }
+//                NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:[webSource.headers valueForKey:@"user-agent"], @"UserAgent", nil];
+//                [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
+//            }
+//            else if(originalUserAgent){
+//                [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : originalUserAgent}];
+//            }
             [request setHTTPMethod:webSource.method];
             [request setHTTPBody:[webSource.body dataUsingEncoding:NSUTF8StringEncoding]];
             [self loadRequest:request];
         }
     }
-    
 }
 -(void)setNavigationTitle{
     NSString *theTitle=[self stringByEvaluatingJavaScriptFromString:@"document.title"];
@@ -962,7 +895,7 @@ static BOOL isRuning;
     isRuning = YES;
     
     NSLog(@"webView是否主线程：%d",[NSThread isMainThread]);
-    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Comfirm", nil) otherButtonTitles:nil, nil];
     [dialogue show];
     while (isRuning==YES) {
         @autoreleasepool {
@@ -973,7 +906,8 @@ static BOOL isRuning;
 
 -(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
     isRuning = YES;
-    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Comfirm", nil), nil];
+
     [dialogue show];
     
     while (isRuning==YES) {
@@ -996,13 +930,13 @@ static BOOL isRuning;
         //textField.placeholder = defaultText;
         textField.text = defaultText;
     }];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Comfirm", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSString *input = ((UITextField *)alertController.textFields.firstObject).text;
         //        completionHandler(input);
         result = input;
         isRuning = NO;
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         //        completionHandler(nil);
         result = nil;
         isRuning = NO;

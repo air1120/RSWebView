@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "429"
-            endingLineNumber = "429"
+            startingLineNumber = "425"
+            endingLineNumber = "425"
             landmarkName = "-pushCurrentSnapshotViewWithRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -90,11 +90,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "651"
-            endingLineNumber = "651"
+            startingLineNumber = "565"
+            endingLineNumber = "565"
             landmarkName = "-setScalesPageToFit:"
             landmarkType = "5">
          </BreakpointContent>
@@ -106,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "656"
-            endingLineNumber = "656"
+            startingLineNumber = "570"
+            endingLineNumber = "570"
             landmarkName = "-setScalesPageToFit:"
             landmarkType = "5">
          </BreakpointContent>
@@ -122,11 +122,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "661"
-            endingLineNumber = "661"
+            startingLineNumber = "575"
+            endingLineNumber = "575"
             landmarkName = "-setScalesPageToFit:"
             landmarkType = "5">
          </BreakpointContent>
@@ -138,11 +138,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "663"
-            endingLineNumber = "663"
+            startingLineNumber = "577"
+            endingLineNumber = "577"
             landmarkName = "-setScalesPageToFit:"
             landmarkType = "5">
          </BreakpointContent>
@@ -154,11 +154,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "785"
-            endingLineNumber = "785"
+            startingLineNumber = "699"
+            endingLineNumber = "699"
             landmarkName = "-startPopSnapshotView"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,23 +202,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "473"
-            endingLineNumber = "473"
-            landmarkName = "-loadRequest:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "275"
@@ -234,7 +218,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "276"
@@ -250,7 +234,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "277"
@@ -266,27 +250,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "493"
-            endingLineNumber = "493"
-            landmarkName = "-reload"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "810"
-            endingLineNumber = "810"
+            startingLineNumber = "724"
+            endingLineNumber = "724"
             landmarkName = "-endPopSnapShotView"
             landmarkType = "5">
          </BreakpointContent>
@@ -298,11 +266,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480223417.806616"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
+            startingLineNumber = "206"
+            endingLineNumber = "206"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -314,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "783"
-            endingLineNumber = "783"
+            startingLineNumber = "697"
+            endingLineNumber = "697"
             landmarkName = "-startPopSnapshotView"
             landmarkType = "5">
          </BreakpointContent>
@@ -330,11 +298,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "432"
-            endingLineNumber = "432"
+            startingLineNumber = "428"
+            endingLineNumber = "428"
             landmarkName = "-pushCurrentSnapshotViewWithRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -346,11 +314,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "402"
-            endingLineNumber = "402"
+            startingLineNumber = "398"
+            endingLineNumber = "398"
             landmarkName = "-callback_webViewDidStartLoad"
             landmarkType = "5">
          </BreakpointContent>
@@ -362,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "614"
-            endingLineNumber = "614"
+            startingLineNumber = "528"
+            endingLineNumber = "528"
             landmarkName = "-evaluateJavaScript:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -425,38 +393,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "373"
-            endingLineNumber = "373"
-            landmarkName = "-webView:didFailNavigation:withError:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "336"
-            endingLineNumber = "336"
-            landmarkName = "-webView:decidePolicyForNavigationAction:decisionHandler:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RSWebView/NJKWebViewProgress/NJKWebViewProgress.m"
             timestampString = "479298922.461815"
             startingColumnNumber = "9223372036854775807"
@@ -474,11 +410,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1062"
-            endingLineNumber = "1062">
+            startingLineNumber = "995"
+            endingLineNumber = "995">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -504,11 +440,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "414"
-            endingLineNumber = "414"
+            startingLineNumber = "410"
+            endingLineNumber = "410"
             landmarkName = "-callback_webViewShouldStartLoadWithRequest:navigationType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -520,11 +456,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "413"
-            endingLineNumber = "413"
+            startingLineNumber = "409"
+            endingLineNumber = "409"
             landmarkName = "-callback_webViewShouldStartLoadWithRequest:navigationType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -536,11 +472,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1069"
-            endingLineNumber = "1069">
+            startingLineNumber = "1002"
+            endingLineNumber = "1002">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -550,11 +486,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "782"
-            endingLineNumber = "782"
+            startingLineNumber = "696"
+            endingLineNumber = "696"
             landmarkName = "-startPopSnapshotView"
             landmarkType = "5">
          </BreakpointContent>
@@ -582,11 +518,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "429"
+            endingLineNumber = "429"
             landmarkName = "-pushCurrentSnapshotViewWithRequest:"
             landmarkType = "5">
          </BreakpointContent>
@@ -854,11 +790,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "334"
+            endingLineNumber = "334"
             landmarkName = "-webView:didReceiveAuthenticationChallenge:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -917,38 +853,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "361"
-            endingLineNumber = "361"
-            landmarkName = "-webView:didStartProvisionalNavigation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "357"
-            endingLineNumber = "357"
-            landmarkName = "-webView:didStartProvisionalNavigation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "RSWebView/WebViewJavascriptBridge/WKWebViewJavascriptBridge.m"
             timestampString = "479901081.233673"
             startingColumnNumber = "9223372036854775807"
@@ -982,11 +886,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "582"
-            endingLineNumber = "582"
+            startingLineNumber = "496"
+            endingLineNumber = "496"
             landmarkName = "-stringByEvaluatingJavaScriptFromStringForUIWebView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -998,11 +902,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/Test/TestTableViewController.m"
-            timestampString = "480308189.250405"
+            timestampString = "480325570.621266"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "103"
-            endingLineNumber = "103"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
             landmarkName = "-tableView:didSelectRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1014,11 +918,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "630"
-            endingLineNumber = "630"
+            startingLineNumber = "544"
+            endingLineNumber = "544"
             landmarkName = "-scalesPageToFit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1030,11 +934,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "628"
-            endingLineNumber = "628"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
             landmarkName = "-scalesPageToFit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1046,11 +950,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "626"
-            endingLineNumber = "626"
+            startingLineNumber = "540"
+            endingLineNumber = "540"
             landmarkName = "-scalesPageToFit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1062,11 +966,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "635"
-            endingLineNumber = "635"
+            startingLineNumber = "549"
+            endingLineNumber = "549"
             landmarkName = "-scalesPageToFit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1078,11 +982,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
             landmarkName = "-evaluateJavaScript:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1094,11 +998,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "623"
-            endingLineNumber = "623"
+            startingLineNumber = "537"
+            endingLineNumber = "537"
             landmarkName = "-evaluateJavaScript:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1110,11 +1014,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "633"
-            endingLineNumber = "633"
+            startingLineNumber = "547"
+            endingLineNumber = "547"
             landmarkName = "-scalesPageToFit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1126,11 +1030,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "648"
-            endingLineNumber = "648"
+            startingLineNumber = "562"
+            endingLineNumber = "562"
             landmarkName = "-setScalesPageToFit:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1142,11 +1046,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "585"
-            endingLineNumber = "585"
+            startingLineNumber = "499"
+            endingLineNumber = "499"
             landmarkName = "-stringByEvaluatingJavaScriptFromStringForUIWebView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1158,11 +1062,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "625"
-            endingLineNumber = "625"
+            startingLineNumber = "539"
+            endingLineNumber = "539"
             landmarkName = "-scalesPageToFit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1174,12 +1078,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "624"
-            endingLineNumber = "624"
-            landmarkName = "-scalesPageToFit"
+            startingLineNumber = "538"
+            endingLineNumber = "538"
+            landmarkName = "-evaluateJavaScript:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1190,11 +1094,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "770"
-            endingLineNumber = "770"
+            startingLineNumber = "684"
+            endingLineNumber = "684"
             landmarkName = "-startPopSnapshotView"
             landmarkType = "5">
          </BreakpointContent>
@@ -1206,11 +1110,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "404"
-            endingLineNumber = "404"
+            startingLineNumber = "400"
+            endingLineNumber = "400"
             landmarkName = "-callback_webViewDidFailLoadWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1222,7 +1126,23 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480223417.806616"
+            timestampString = "480411626.222317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/RSWebView/RSWebView.m"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "221"
@@ -1238,43 +1158,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480223417.806616"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "220"
-            endingLineNumber = "220"
-            landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "498"
-            endingLineNumber = "498"
-            landmarkName = "-reload"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "634"
-            endingLineNumber = "634"
+            startingLineNumber = "548"
+            endingLineNumber = "548"
             landmarkName = "-scalesPageToFit"
             landmarkType = "5">
          </BreakpointContent>
@@ -1286,11 +1174,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "618"
-            endingLineNumber = "618"
+            startingLineNumber = "532"
+            endingLineNumber = "532"
             landmarkName = "-evaluateJavaScript:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1302,11 +1190,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "617"
-            endingLineNumber = "617"
+            startingLineNumber = "531"
+            endingLineNumber = "531"
             landmarkName = "-evaluateJavaScript:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1318,11 +1206,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "376"
-            endingLineNumber = "376"
+            startingLineNumber = "369"
+            endingLineNumber = "369"
             landmarkName = "@implementation RSWebView"
             landmarkType = "3">
          </BreakpointContent>
@@ -1340,54 +1228,6 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "+canInitWithRequest:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "496"
-            endingLineNumber = "496"
-            landmarkName = "-reload"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "359"
-            endingLineNumber = "359"
-            landmarkName = "-webView:didStartProvisionalNavigation:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "343"
-            endingLineNumber = "343"
-            landmarkName = "-webView:decidePolicyForNavigationAction:decisionHandler:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1442,15 +1282,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480223417.806616"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "231"
-            endingLineNumber = "231"
+            startingLineNumber = "232"
+            endingLineNumber = "232"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1462,11 +1302,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "954"
-            endingLineNumber = "954"
+            startingLineNumber = "886"
+            endingLineNumber = "886"
             landmarkName = "+setWebViewType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1478,7 +1318,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480223417.806616"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -1494,11 +1334,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480223417.806616"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "194"
-            endingLineNumber = "194"
+            startingLineNumber = "195"
+            endingLineNumber = "195"
             landmarkName = "-webView:didFailLoadWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1510,11 +1350,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480223417.806616"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "196"
-            endingLineNumber = "196"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
             landmarkName = "-webView:didFailLoadWithError:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1590,11 +1430,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "350"
-            endingLineNumber = "350"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "-webView:didReceiveAuthenticationChallenge:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1606,11 +1446,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480232397.432555"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "351"
-            endingLineNumber = "351"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
             landmarkName = "-webView:didReceiveAuthenticationChallenge:completionHandler:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1618,15 +1458,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480223914.751921"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "203"
+            endingLineNumber = "203"
             landmarkName = "-webView:shouldStartLoadWithRequest:navigationType:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1638,7 +1478,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480225513.157404"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "254"
@@ -1686,11 +1526,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/Test/TestTableViewController.m"
-            timestampString = "480235466.050128"
+            timestampString = "480325570.621266"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "-tableView:numberOfRowsInSection:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1698,15 +1538,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/Test/Example.m"
-            timestampString = "480235901.326444"
+            timestampString = "480410279.614671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "61"
-            endingLineNumber = "61"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "@implementation Example"
             landmarkType = "3">
          </BreakpointContent>
@@ -1718,11 +1558,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/Test/Example.m"
-            timestampString = "480235318.786693"
+            timestampString = "480410279.614671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
             landmarkName = "-TestAlert"
             landmarkType = "5">
          </BreakpointContent>
@@ -1734,11 +1574,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/Test/TestTableViewController.m"
-            timestampString = "480235494.619442"
+            timestampString = "480325570.621266"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
+            startingLineNumber = "55"
+            endingLineNumber = "55"
             landmarkName = "-tableView:cellForRowAtIndexPath:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1746,11 +1586,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480236710.597292"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "265"
@@ -1782,11 +1622,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "605"
-            endingLineNumber = "605"
+            startingLineNumber = "519"
+            endingLineNumber = "519"
             landmarkName = "-handleStringByEvaluatingJavaScriptFromString:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1798,11 +1638,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "604"
-            endingLineNumber = "604"
+            startingLineNumber = "518"
+            endingLineNumber = "518"
             landmarkName = "-handleStringByEvaluatingJavaScriptFromString:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1846,11 +1686,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "603"
-            endingLineNumber = "603"
+            startingLineNumber = "517"
+            endingLineNumber = "517"
             landmarkName = "-handleStringByEvaluatingJavaScriptFromString:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1958,11 +1798,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "565"
-            endingLineNumber = "565"
+            startingLineNumber = "479"
+            endingLineNumber = "479"
             landmarkName = "-stringByEvaluatingJavaScriptFromString:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1974,11 +1814,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "588"
-            endingLineNumber = "588"
+            startingLineNumber = "502"
+            endingLineNumber = "502"
             landmarkName = "-stringByEvaluatingJavaScriptFromStringForUIWebView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -1986,15 +1826,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/Test/Example.m"
-            timestampString = "480247983.698242"
+            timestampString = "480410279.614671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
             landmarkName = "-TestComfirm"
             landmarkType = "5">
          </BreakpointContent>
@@ -2002,15 +1842,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/Test/Example.m"
-            timestampString = "480248031.481098"
+            timestampString = "480410279.614671"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "30"
-            endingLineNumber = "30"
+            startingLineNumber = "59"
+            endingLineNumber = "59"
             landmarkName = "-TestComfirm"
             landmarkType = "5">
          </BreakpointContent>
@@ -2022,11 +1862,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "596"
-            endingLineNumber = "596"
+            startingLineNumber = "510"
+            endingLineNumber = "510"
             landmarkName = "-stringByEvaluatingJavaScriptFromStringForUIWebView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2038,11 +1878,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "592"
-            endingLineNumber = "592"
+            startingLineNumber = "506"
+            endingLineNumber = "506"
             landmarkName = "-stringByEvaluatingJavaScriptFromStringForUIWebView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2054,11 +1894,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
+            startingLineNumber = "505"
+            endingLineNumber = "505"
             landmarkName = "-stringByEvaluatingJavaScriptFromStringForUIWebView:"
             landmarkType = "5">
          </BreakpointContent>
@@ -2066,16 +1906,160 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480310717.702646"
+            timestampString = "480411626.222317"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "558"
-            endingLineNumber = "558"
+            startingLineNumber = "472"
+            endingLineNumber = "472"
             landmarkName = "-stringByEvaluatingJavaScriptFromString:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/Test/Example.m"
+            timestampString = "480410279.614671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "244"
+            endingLineNumber = "244"
+            landmarkName = "-webView:didStartProvisionalNavigation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/RSWebView/RSWebView.m"
+            timestampString = "480411626.222317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "612"
+            endingLineNumber = "612"
+            landmarkName = "-methodSignatureForSelector:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/RSWebView/RSWebView.m"
+            timestampString = "480411626.222317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "628"
+            endingLineNumber = "628"
+            landmarkName = "-forwardInvocation:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/Test/Example.m"
+            timestampString = "480410279.614671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "-TestGoBack"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/Test/Example.m"
+            timestampString = "480410279.614671"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "-TestGoBack"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/RSWebView/RSWebView.m"
+            timestampString = "480411626.222317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "485"
+            endingLineNumber = "485"
+            landmarkName = "-stringByEvaluatingJavaScriptFromString:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/RSWebView/RSWebView.m"
+            timestampString = "480411626.222317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "837"
+            endingLineNumber = "837"
+            landmarkName = "-setWebSource:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/RSWebView/RSWebView.m"
+            timestampString = "480411626.222317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "120"
+            endingLineNumber = "120"
+            landmarkName = "-initWebViewWithFrame:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/RSWebView/RSWebView.m"
+            timestampString = "480411626.222317"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "848"
+            endingLineNumber = "848"
+            landmarkName = "-setWebSource:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
