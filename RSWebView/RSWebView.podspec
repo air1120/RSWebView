@@ -8,10 +8,14 @@ Pod::Spec.new do |s|
   s.author   = { 'RasonWu' => 'wlww9@163.com' }
   s.source   = { :git => 'https://github.com/air1120/RSWebView.git', :tag => "#{s.version}" }
   s.requires_arc = true
-  s.source_files = 'RSWebView/RSWebView/RSWebView/*','RSWebView/RSWebView/RSWebView/Third/NJKWebViewProgress/*','RSWebView/RSWebView/RSWebView/Third/WebViewJavascriptBridge/*'
-  s.description  = 'UIWebView switched automatically into WKWebView.'
-
-  s.ios.deployment_target = '7.0'
-  s.ios.frameworks = 'WebKit'
-
+s.ios.deployment_target = '7.0'
+s.ios.frameworks = 'WebKit'
+s.description  = 'UIWebView switched automatically into WKWebView.'
+s.source_files = 'RSWebView/RSWebView/*','RSWebView/RSWebView/Third/NJKWebViewProgress/*','RSWebView/RSWebView/Third/WebViewJavascriptBridge/*'
+s.subspec "en.lproj" do |sp|
+sp.resources = 'RSWebView/RSWebView/en.lproj/*'
+end
+s.subspec "zh-Hans.lproj" do |sp|
+sp.resources = 'RSWebView/RSWebView/zh-Hans.lproj/*'
+end
 end

@@ -17,6 +17,8 @@
 #define boundsWidth self.superview.bounds.size.width
 #define boundsHeight self.superview.bounds.size.height
 static NSString *originalUserAgent;
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wincomplete-implementation"
 @implementation RSWebSource
 
 -(id)initWithUrl:(NSString *)url method:(NSString *)method headers:(NSDictionary *)headers body:(id)body{
@@ -83,6 +85,7 @@ static NSString *originalUserAgent;
  */
 @property (nonatomic)UIView* swipingBackgoundView;
 @end
+
 @implementation RSWebView
 {
     NJKWebViewProgressView *_progressView;
@@ -1004,3 +1007,5 @@ static BOOL isRuning;
     isRuning = NO;
 }
 @end
+
+#pragma clang diagnostic pop
