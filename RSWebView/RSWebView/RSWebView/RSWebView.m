@@ -492,15 +492,8 @@ static NSString *originalUserAgent;
                 isRunning = NO;
             }];
         });
-        NSRunLoop *runLoop = [[NSRunLoop alloc]init];
-        [runLoop addPort:[NSMachPort port] forMode:NSDefaultRunLoopMode];
         while (isRunning==YES) {
-            @autoreleasepool {
-                //            NSLog(@"开始");
-                
-                [runLoop runUntilDate:[NSDate distantFuture]];
-                //            NSLog(@"结束");
-            }
+            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
         return result;
     }
@@ -855,16 +848,6 @@ static NSString *originalUserAgent;
             NSURL * _url = [NSURL URLWithString:webSource.url];
             NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:_url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
             [request setAllHTTPHeaderFields:webSource.headers];
-//            if(webSource.headers && [webSource.headers valueForKey:@"user-agent"]){
-//                if (!originalUserAgent) {
-//                    originalUserAgent = [self stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-//                }
-//                NSDictionary *dictionnary = [[NSDictionary alloc] initWithObjectsAndKeys:[webSource.headers valueForKey:@"user-agent"], @"UserAgent", nil];
-//                [[NSUserDefaults standardUserDefaults] registerDefaults:dictionnary];
-//            }
-//            else if(originalUserAgent){
-//                [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent" : originalUserAgent}];
-//            }
             [request setHTTPMethod:webSource.method];
             [request setHTTPBody:[webSource.body dataUsingEncoding:NSUTF8StringEncoding]];
             [self loadRequest:request];
@@ -926,7 +909,7 @@ static BOOL isRuning;
 -(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
     isRuning = YES;
     UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Comfirm", nil), nil];
-
+    
     [dialogue show];
     
     while (isRuning==YES) {
