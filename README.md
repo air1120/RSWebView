@@ -47,3 +47,15 @@ _webView.webSource = [[RSWebSource alloc]initWithHtml:@"<html><div>测试</div><
 - (void)callHandler:(NSString *)handlerName data:(id)data;
 - (void)callHandler:(NSString *)handlerName data:(id)data responseCallback:(WVJBResponseCallback)responseCallback;
 ```
+#####添加忽略ssl验证（[iOS https请求为什么要忽略证书](http://zhidao.baidu.com/link?url=Mm8g0sKcNjM6FAtx8xuzlOTA2fMKePZbzgLG9rSB8fPE4gepCp-9oDa24lStgvyTeyxQyLG54e5R2YLMNG2aP_)）
+```
+[BBWebViewSSLProtocol addTrustedDomain:@"js.com"];
+```
+#####限制外部应用打开
+```
+//包括获取本地资源，所以file必须要加上
+webView.trustedScheme = @[@"file",@"mqq"];
+```
+trustedScheme不设置，则不会限制。
+
+

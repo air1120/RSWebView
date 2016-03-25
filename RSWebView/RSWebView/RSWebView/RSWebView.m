@@ -116,8 +116,7 @@ static NSString *originalUserAgent;
     return self;
 }
 -(void)initWebViewWithFrame:(CGRect)frame{
-    //包括获取本地资源，所以file必须要加上
-    self.trustedScheme = @[@"file",@"mqq"];
+    
     BOOL isIOS8AndGreater = [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0;
     _isUsingUIWebView = !isIOS8AndGreater;
     switch (webViewType) {
