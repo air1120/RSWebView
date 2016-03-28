@@ -12,10 +12,5 @@ s.ios.deployment_target = '7.0'
 s.ios.frameworks = 'WebKit'
 s.description  = 'UIWebView switched automatically into WKWebView.'
 s.source_files = 'RSWebView/RSWebView/RSWebView/*','RSWebView/RSWebView/RSWebView/Third/NJKWebViewProgress/*','RSWebView/RSWebView/RSWebView/Third/WebViewJavascriptBridge/*'
-s.subspec "en.lproj" do |sp|
-sp.source_files = 'RSWebView/RSWebView/RSWebView/en.lproj/*'
-end
-s.subspec "zh-Hans.lproj" do |sp|
-sp.source_files = 'RSWebView/RSWebView/RSWebView/zh-Hans.lproj/*'
-end
+sp.resources = 'RSWebView/*.{lproj}'
 end
