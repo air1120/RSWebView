@@ -214,7 +214,7 @@ static NSString *originalUserAgent;
     [self callback_webViewDidFailLoadWithError:error];
     NSLog(@"请求失败:%@",error);
     if (error.code == -1009) {
-        [[[UIAlertView alloc]initWithTitle:nil message:@"请检查当前网络问题" delegate:self cancelButtonTitle:NSLocalizedString(@"Comfirm", nil) otherButtonTitles:nil, nil]show];
+        [[[UIAlertView alloc]initWithTitle:nil message:@"请检查当前网络问题" delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) otherButtonTitles:nil, nil]show];
     }
 }
 -(BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -283,7 +283,7 @@ static NSString *originalUserAgent;
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
     
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Comfirm", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         completionHandler();
     }]];
     [self.viewController presentViewController:alertController animated:YES completion:^{}];
@@ -299,11 +299,11 @@ static NSString *originalUserAgent;
         //textField.placeholder = defaultText;
         textField.text = defaultText;
     }];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Comfirm", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSString *input = ((UITextField *)alertController.textFields.firstObject).text;
         completionHandler(input);
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         completionHandler(nil);
     }]];
     [self.viewController presentViewController:alertController animated:YES completion:^{}];
@@ -315,10 +315,10 @@ static NSString *originalUserAgent;
     //    NSString *sender = [NSString stringWithFormat:messengeAlert, hostString];
     
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Comfirm", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         completionHandler(YES);
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         completionHandler(NO);
     }]];
     [self.viewController presentViewController:alertController animated:YES completion:^{}];
@@ -896,7 +896,7 @@ static BOOL isRuning;
     isRuning = YES;
     
     NSLog(@"webView是否主线程：%d",[NSThread isMainThread]);
-    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Comfirm", nil) otherButtonTitles:nil, nil];
+    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) otherButtonTitles:nil, nil];
     [dialogue show];
     while (isRuning==YES) {
         @autoreleasepool {
@@ -907,7 +907,7 @@ static BOOL isRuning;
 
 -(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
     isRuning = YES;
-    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedString(@"Cancel", nil) otherButtonTitles:NSLocalizedString(@"Comfirm", nil), nil];
+    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) otherButtonTitles:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil), nil];
     
     [dialogue show];
     
@@ -931,13 +931,13 @@ static BOOL isRuning;
         //textField.placeholder = defaultText;
         textField.text = defaultText;
     }];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Comfirm", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         NSString *input = ((UITextField *)alertController.textFields.firstObject).text;
         //        completionHandler(input);
         result = input;
         isRuning = NO;
     }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         //        completionHandler(nil);
         result = nil;
         isRuning = NO;

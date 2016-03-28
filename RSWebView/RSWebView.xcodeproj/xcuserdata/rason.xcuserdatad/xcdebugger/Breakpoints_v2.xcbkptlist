@@ -1195,7 +1195,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "550"
             endingLineNumber = "550"
-            landmarkName = "-evaluateJavaScript:completionHandler:"
+            landmarkName = "-scalesPageToFit"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -1618,22 +1618,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480419007.421423"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "538"
-            endingLineNumber = "538"
-            landmarkName = "-evaluateJavaScript:completionHandler:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
@@ -2011,7 +1995,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "856"
             endingLineNumber = "856"
-            landmarkName = "-setWebSource:"
+            landmarkName = "-setNavigationTitle"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
