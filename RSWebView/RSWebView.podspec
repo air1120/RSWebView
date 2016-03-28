@@ -12,5 +12,5 @@ s.ios.deployment_target = '7.0'
 s.ios.frameworks = 'WebKit'
 s.description  = 'UIWebView switched automatically into WKWebView.'
 s.source_files = 'RSWebView/RSWebView/RSWebView/*','RSWebView/RSWebView/RSWebView/Third/NJKWebViewProgress/*','RSWebView/RSWebView/RSWebView/Third/WebViewJavascriptBridge/*'
-sp.resources = 'RSWebView/*.{lproj}'
+s.resources = 'RSWebView/RSWebView/RSWebView/*.{lproj}'
 end
