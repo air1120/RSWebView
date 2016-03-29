@@ -1305,22 +1305,6 @@
             timestampString = "480419007.421423"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "905"
-            endingLineNumber = "905"
-            landmarkName = "-webView:runJavaScriptAlertPanelWithMessage:initiatedByFrame:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "480419007.421423"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
             startingLineNumber = "122"
             endingLineNumber = "122"
             landmarkName = "-initWebViewWithFrame:"
@@ -1618,7 +1602,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
@@ -2012,6 +1996,22 @@
             startingLineNumber = "139"
             endingLineNumber = "139"
             landmarkName = "-initWebViewWithFrame:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "RSWebView/RSWebView/RSWebView.m"
+            timestampString = "480924130.759162"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "923"
+            endingLineNumber = "923"
+            landmarkName = "-webView:runJavaScriptTextInputPanelWithPrompt:defaultText:initiatedByFrame:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

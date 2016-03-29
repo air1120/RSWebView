@@ -890,41 +890,22 @@ static NSString *originalUserAgent;
 #pragma mark - 其它类
 @implementation UIWebView (JavaScriptAlert)
 
-static BOOL diagStat = NO;
-static BOOL isRuning;
+
 -(void)webView:(UIWebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
-    isRuning = YES;
     
     NSLog(@"webView是否主线程：%d",[NSThread isMainThread]);
     UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) otherButtonTitles:nil, nil];
     [dialogue show];
-    while (isRuning==YES) {
-        @autoreleasepool {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-    }
 }
 
 -(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
-    isRuning = YES;
     UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) otherButtonTitles:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil), nil];
     
     [dialogue show];
-    
-    while (isRuning==YES) {
-        @autoreleasepool {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-    }
-    
-    
-    return diagStat;
+    return YES;
 }
 - (NSString *)webView:(UIWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(id)frame
 {
-    isRuning = YES;
-    //    NSString *hostString = webView.URL.host;
-    //    NSString *sender = [NSString stringWithFormat:messengeAlert, hostString];
     __block NSString *result ;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:prompt message:nil preferredStyle:UIAlertControllerStyleAlert];
     [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
@@ -935,21 +916,13 @@ static BOOL isRuning;
         NSString *input = ((UITextField *)alertController.textFields.firstObject).text;
         //        completionHandler(input);
         result = input;
-        isRuning = NO;
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         //        completionHandler(nil);
         result = nil;
-        isRuning = NO;
     }]];
     [[self viewController] presentViewController:alertController animated:YES completion:^{}];
-    while (isRuning==YES) {
-        @autoreleasepool {
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-        }
-    }
-    
-    return result;
+    return nil;
 }
 //获取当前屏幕显示的viewcontroller
 - (UIViewController *)viewController
@@ -982,11 +955,10 @@ static BOOL isRuning;
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     
     if (buttonIndex==0) {
-        diagStat=NO;
+        
     }else if(buttonIndex==1){
-        diagStat=YES;
+        
     }
-    isRuning = NO;
 }
 @end
 

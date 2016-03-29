@@ -60,7 +60,6 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 @property (nonatomic, readonly, getter=canGoBack) BOOL canGoBack;
 @property (nonatomic, readonly, getter=canGoForward) BOOL canGoForward;
 @property (nonatomic, readonly, getter=isLoading) BOOL loading;
-- (nullable NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)script;
 - (void)evaluateJavaScript:(NSString *)javaScriptString completionHandler:(void (^)(id result, NSError *error))completionHandler;
 
 @property (nonatomic) BOOL scalesPageToFit;
