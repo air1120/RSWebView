@@ -58,6 +58,7 @@ static NSString *originalUserAgent;
 @interface RSWebView ()<UIGestureRecognizerDelegate>
 #pragma mark - js交互
 @property id bridge;
+
 #pragma mark - 其它部分
 @property (nonatomic)UIScreenEdgePanGestureRecognizer* swipePanGesture;
 @property (nonatomic)UIBarButtonItem* closeButtonItem;
@@ -456,7 +457,6 @@ static NSString *originalUserAgent;
      ];
 }
 #pragma mark - update nav items
-
 -(void)updateNavigationItems{
     //config navigation item
     self.viewController.navigationItem.leftItemsSupplementBackButton = YES;
@@ -474,6 +474,83 @@ static NSString *originalUserAgent;
 }
 
 #pragma mark - UIWebView和WKWebView公有部分处理
+-(UIScrollView *)scrollView{
+    return [self.realWebView scrollView];
+}
+- (void)loadRequest:(NSURLRequest *)request{
+    if(_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView loadRequest:request];
+    }
+    else
+    {
+        [(WKWebView*)self.realWebView loadRequest:request];
+    }
+}
+- (void)loadHTMLString:(NSString *)string baseURL:(NSURL *)baseURL
+{
+    if(_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView loadHTMLString:string baseURL:baseURL];
+    }
+    else
+    {
+        [(WKWebView*)self.realWebView loadHTMLString:string baseURL:baseURL];
+    }
+}
+-(NSURLRequest *)request{
+    return [self.realWebView request];
+}
+- (void)reload
+{
+    if(_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView reload];
+    }
+    else
+    {
+        [(WKWebView*)self.realWebView reload];
+    }
+}
+- (void)stopLoading
+{
+    [self.realWebView stopLoading];
+}
+
+- (void)goBack
+{
+    if(_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView goBack];
+    }
+    else
+    {
+        [(WKWebView*)self.realWebView goBack];
+    }
+}
+- (void)goForward
+{
+    if(_isUsingUIWebView)
+    {
+        [(UIWebView*)self.realWebView goForward];
+    }
+    else
+    {
+        [(WKWebView*)self.realWebView goForward];
+    }
+}
+-(BOOL)canGoBack
+{
+    return [self.realWebView canGoBack];
+}
+-(BOOL)canGoForward
+{
+    return [self.realWebView canGoForward];
+}
+-(BOOL)isLoading
+{
+    return [self.realWebView isLoading];
+}
 
 -(NSString *)stringByEvaluatingJavaScriptFromString:(NSString *)javaScriptString
 {
@@ -887,107 +964,117 @@ static NSString *originalUserAgent;
     webViewType = type;
 }
 @end
-#pragma mark - 其它类
-@implementation UIWebView (JavaScriptAlert)
-
-static BOOL diagStat = NO;
-static BOOL isRunningInUI;
--(void)webView:(UIWebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
-    isRunningInUI = YES;
-    
-    NSLog(@"webView是否主线程：%d",[NSThread isMainThread]);
-    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) otherButtonTitles:nil, nil];
-    [dialogue show];
-    while (isRunningInUI==YES) {
-        @autoreleasepool {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-    }
-}
-
--(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
-    isRunningInUI = YES;
-    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) otherButtonTitles:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil), nil];
-    
-    [dialogue show];
-    
-    while (isRunningInUI==YES) {
-        @autoreleasepool {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-    }
-    
-    
-    return diagStat;
-}
-- (NSString *)webView:(UIWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(id)frame
-{
-    isRunningInUI = YES;
-    //    NSString *hostString = webView.URL.host;
-    //    NSString *sender = [NSString stringWithFormat:messengeAlert, hostString];
-    __block NSString *result ;
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:prompt message:nil preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
-        //textField.placeholder = defaultText;
-        textField.text = defaultText;
-    }];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        NSString *input = ((UITextField *)alertController.textFields.firstObject).text;
-        //        completionHandler(input);
-        result = input;
-        isRunningInUI = NO;
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        //        completionHandler(nil);
-        result = nil;
-        isRunningInUI = NO;
-    }]];
-    [[self viewController] presentViewController:alertController animated:YES completion:^{}];
-    while (isRunningInUI==YES) {
-        @autoreleasepool {
-            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
-        }
-    }
-    
-    return result;
-}
-//获取当前屏幕显示的viewcontroller
-- (UIViewController *)viewController
-{
-    UIViewController *result = nil;
-    
-    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
-    if (window.windowLevel != UIWindowLevelNormal)
-    {
-        NSArray *windows = [[UIApplication sharedApplication] windows];
-        for(UIWindow * tmpWin in windows)
-        {
-            if (tmpWin.windowLevel == UIWindowLevelNormal)
-            {
-                window = tmpWin;
-                break;
-            }
-        }
-    }
-    
-    UIView *frontView = [[window subviews] firstObject];
-    id nextResponder = [frontView nextResponder];
-    
-    if ([nextResponder isKindOfClass:[UIViewController class]])
-        result = nextResponder;
-    else
-        result = window.rootViewController;
-    return result;
-}
--(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
-    
-    if (buttonIndex==0) {
-        diagStat=NO;
-    }else if(buttonIndex==1){
-        diagStat=YES;
-    }
-    isRunningInUI = NO;
-}
-@end
+//#pragma mark - 其它类
+//@implementation UIWebView (JavaScriptAlert)
+//
+//static BOOL diagStat = NO;
+//static BOOL isRunningInUI;
+//static int isOne = 0;
+//-(void)webView:(UIWebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
+//    while (isOne==0) {
+//        isOne++;
+//        isRunningInUI = YES;
+//
+//        NSLog(@"webView是否主线程：%d",[NSThread isMainThread]);
+//        UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) otherButtonTitles:nil, nil];
+//        [dialogue show];
+//        @autoreleasepool {
+//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//        }
+//        while (isRunningInUI==YES) {
+//            @autoreleasepool {
+//                [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//            }
+//        }
+//
+//    }
+//}
+//
+//-(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
+//    isRunningInUI = YES;
+//    UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) otherButtonTitles:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil), nil];
+//
+//    [dialogue show];
+//
+//    while (isRunningInUI==YES) {
+//        @autoreleasepool {
+//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//        }
+//    }
+//
+//
+//    return diagStat;
+//}
+//- (NSString *)webView:(UIWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(id)frame
+//{
+//    isRunningInUI = YES;
+//    //    NSString *hostString = webView.URL.host;
+//    //    NSString *sender = [NSString stringWithFormat:messengeAlert, hostString];
+//    __block NSString *result ;
+//    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:prompt message:nil preferredStyle:UIAlertControllerStyleAlert];
+//    [alertController addTextFieldWithConfigurationHandler:^(UITextField *textField) {
+//        //textField.placeholder = defaultText;
+//        textField.text = defaultText;
+//    }];
+//    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//        NSString *input = ((UITextField *)alertController.textFields.firstObject).text;
+//        //        completionHandler(input);
+//        result = input;
+//        isRunningInUI = NO;
+//    }]];
+//    [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+//        //        completionHandler(nil);
+//        result = nil;
+//        isRunningInUI = NO;
+//    }]];
+//    [[self viewController] presentViewController:alertController animated:YES completion:^{}];
+//    while (isRunningInUI==YES) {
+//        @autoreleasepool {
+//            [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
+//        }
+//    }
+//
+//    return result;
+//}
+////获取当前屏幕显示的viewcontroller
+//- (UIViewController *)viewController
+//{
+//    UIViewController *result = nil;
+//
+//    UIWindow * window = [[UIApplication sharedApplication] keyWindow];
+//    if (window.windowLevel != UIWindowLevelNormal)
+//    {
+//        NSArray *windows = [[UIApplication sharedApplication] windows];
+//        for(UIWindow * tmpWin in windows)
+//        {
+//            if (tmpWin.windowLevel == UIWindowLevelNormal)
+//            {
+//                window = tmpWin;
+//                break;
+//            }
+//        }
+//    }
+//
+//    UIView *frontView = [[window subviews] firstObject];
+//    id nextResponder = [frontView nextResponder];
+//
+//    if ([nextResponder isKindOfClass:[UIViewController class]])
+//        result = nextResponder;
+//    else
+//        result = window.rootViewController;
+//    return result;
+//}
+//-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+//
+//    if (buttonIndex==0) {
+//        diagStat=NO;
+//    }else if(buttonIndex==1){
+//        diagStat=YES;
+//    }
+//
+//    isRunningInUI = NO;
+//    isOne--;
+//}
+//@end
 
 #pragma clang diagnostic pop

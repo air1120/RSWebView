@@ -78,11 +78,4 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 - (void)callHandler:(NSString *)handlerName data:(id)data responseCallback:(WVJBResponseCallback)responseCallback;
 +(void)setWebViewType:(RSWebViewType )type;
 @end
-
-#pragma mark - 其它类
-@interface UIWebView (JavaScriptAlert)<UIAlertViewDelegate>
--(void)webView:(UIWebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame;
-
--(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame;
-@end
 NS_ASSUME_NONNULL_END
