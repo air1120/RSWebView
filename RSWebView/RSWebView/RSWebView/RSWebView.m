@@ -891,14 +891,14 @@ static NSString *originalUserAgent;
 @implementation UIWebView (JavaScriptAlert)
 
 static BOOL diagStat = NO;
-static BOOL isRuning;
+static BOOL isRunningInUI;
 -(void)webView:(UIWebView *)sender runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
-    isRuning = YES;
+    isRunningInUI = YES;
     
     NSLog(@"webView是否主线程：%d",[NSThread isMainThread]);
     UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) otherButtonTitles:nil, nil];
     [dialogue show];
-    while (isRuning==YES) {
+    while (isRunningInUI==YES) {
         @autoreleasepool {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
@@ -906,12 +906,12 @@ static BOOL isRuning;
 }
 
 -(BOOL)webView:(UIWebView *)sender runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(id)frame{
-    isRuning = YES;
+    isRunningInUI = YES;
     UIAlertView* dialogue = [[UIAlertView alloc]initWithTitle:nil message:message delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) otherButtonTitles:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil), nil];
     
     [dialogue show];
     
-    while (isRuning==YES) {
+    while (isRunningInUI==YES) {
         @autoreleasepool {
             [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
         }
@@ -922,7 +922,7 @@ static BOOL isRuning;
 }
 - (NSString *)webView:(UIWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(NSString *)defaultText initiatedByFrame:(id)frame
 {
-    isRuning = YES;
+    isRunningInUI = YES;
     //    NSString *hostString = webView.URL.host;
     //    NSString *sender = [NSString stringWithFormat:messengeAlert, hostString];
     __block NSString *result ;
@@ -935,15 +935,15 @@ static BOOL isRuning;
         NSString *input = ((UITextField *)alertController.textFields.firstObject).text;
         //        completionHandler(input);
         result = input;
-        isRuning = NO;
+        isRunningInUI = NO;
     }]];
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"Cancel",@"RSWebView", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         //        completionHandler(nil);
         result = nil;
-        isRuning = NO;
+        isRunningInUI = NO;
     }]];
     [[self viewController] presentViewController:alertController animated:YES completion:^{}];
-    while (isRuning==YES) {
+    while (isRunningInUI==YES) {
         @autoreleasepool {
             [[NSRunLoop currentRunLoop] runUntilDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
         }
@@ -986,7 +986,7 @@ static BOOL isRuning;
     }else if(buttonIndex==1){
         diagStat=YES;
     }
-    isRuning = NO;
+    isRunningInUI = NO;
 }
 @end
 
