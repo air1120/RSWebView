@@ -94,17 +94,17 @@
 -(void)Test注册ObjCEcho方法到OC中{
     [self pushView];
     [self doSomeThing:^{
-        [_webView registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
-            NSLog(@"registerHandlerLog: %@", data);
-            responseCallback(data);
-        }];
+//        [_webView registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
+//            NSLog(@"registerHandlerLog: %@", data);
+//            responseCallback(data);
+//        }];
     }];
 }
 -(void)Test调用ObjCEcho{
-    [self pushView];
-    [self doSomeThing:^{
+//    [self pushView];
+//    [self doSomeThing:^{
         [_webView stringByEvaluatingJavaScriptFromString:@"testEcho()"];
-    }];
+//    }];
 }
 -(void)Test测试evaluateJavaScript{
     [self pushView];
@@ -174,10 +174,10 @@
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
         //        [self doSomeThing:^{
         _webView = [[RSWebView alloc]initWithFrame:CGRectMake(0, 0, viewController.view.frame.size.width, viewController.view.frame.size.height)];
-        _webView.delegate = self;
+//        _webView.delegate = self;
         NSLog(@"%@",NSStringFromCGRect(_webView.frame));
         [viewController.view addSubview:_webView];
-        _webView.delegate = self;
+//        _webView.delegate = self;
         NSString *urlString = @"https://js.com/";
         NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
         [self doSomeThing:^{

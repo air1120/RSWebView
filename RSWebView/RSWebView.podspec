@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
 s.ios.deployment_target = '7.0'
 s.ios.frameworks = 'WebKit'
 s.description  = 'UIWebView switched automatically into WKWebView.'
-s.source_files = 'RSWebView/RSWebView/RSWebView/*','RSWebView/RSWebView/RSWebView/Third/NJKWebViewProgress/*','RSWebView/RSWebView/RSWebView/Third/WebViewJavascriptBridge/*'
-s.resources = 'RSWebView/RSWebView/RSWebView/*.{lproj}'
+s.source_files = 'RSWebView/RSWebView/RSWebView/*.{h,m}','RSWebView/RSWebView/RSWebView/Third/NJKWebViewProgress/*.{h,m}','RSWebView/RSWebView/RSWebView/Third/WebViewJavascriptBridge/*.{h,m}'
+s.resources = 'RSWebView/RSWebView/RSWebView/*.{js,lproj}'
 end

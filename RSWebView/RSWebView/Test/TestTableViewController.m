@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [RSWebView setWebViewType:RSWebViewTypeUIWebView];
+//    [RSWebView setWebViewType:RSWebViewTypeUIWebView];
     ex = [[Example alloc]init];
     ex.viewController = self;
     

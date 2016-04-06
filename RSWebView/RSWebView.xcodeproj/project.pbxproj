@@ -34,6 +34,9 @@
 		8E8B94A61C9A9D090020DF60 /* TesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B94A41C9A9D090020DF60 /* TesViewController.xib */; };
 		8E8EE5051C916918006094A1 /* BBWebViewSSLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */; };
 		8ED56B0E1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 8ED56B0D1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js */; };
+		8ED56B131CB5157800EF8FA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED56B121CB5157800EF8FA3 /* ViewController.m */; };
+		8ED56B161CB515E200EF8FA3 /* TestWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED56B151CB515E200EF8FA3 /* TestWebView.m */; };
+		8ED56B1C1CB517C600EF8FA3 /* AAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED56B1B1CB517C600EF8FA3 /* AAViewController.m */; };
 		8EE800401CA12ED9000AC147 /* RSWebView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EE800421CA12ED9000AC147 /* RSWebView.strings */; };
 /* End PBXBuildFile section */
 
@@ -102,6 +105,12 @@
 		8E8EE5031C916918006094A1 /* BBWebViewSSLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBWebViewSSLProtocol.h; sourceTree = "<group>"; };
 		8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWebViewSSLProtocol.m; sourceTree = "<group>"; };
 		8ED56B0D1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = setupWebViewJavascriptBridge.js; sourceTree = "<group>"; };
+		8ED56B111CB5157800EF8FA3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8ED56B121CB5157800EF8FA3 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8ED56B141CB515E200EF8FA3 /* TestWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWebView.h; sourceTree = "<group>"; };
+		8ED56B151CB515E200EF8FA3 /* TestWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestWebView.m; sourceTree = "<group>"; };
+		8ED56B1A1CB517C600EF8FA3 /* AAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAViewController.h; sourceTree = "<group>"; };
+		8ED56B1B1CB517C600EF8FA3 /* AAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAViewController.m; sourceTree = "<group>"; };
 		8EE8003C1CA12E60000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		8EE8003D1CA12E60000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8EE800411CA12ED9000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/RSWebView.strings"; sourceTree = "<group>"; };
@@ -161,13 +170,19 @@
 				8E6F0C641C86C85A0073B3C5 /* RSWebView */,
 				8E6F0C341C86C81B0073B3C5 /* AppDelegate.h */,
 				8E42F62A1C9BF42000B38284 /* air2.jpg */,
+				8ED56B141CB515E200EF8FA3 /* TestWebView.h */,
+				8ED56B151CB515E200EF8FA3 /* TestWebView.m */,
 				8E6F0C351C86C81B0073B3C5 /* AppDelegate.m */,
+				8ED56B111CB5157800EF8FA3 /* ViewController.h */,
+				8ED56B121CB5157800EF8FA3 /* ViewController.m */,
 				8E88924A1C8D5F7300C11C36 /* index.html */,
 				8E6F0C3A1C86C81B0073B3C5 /* Main.storyboard */,
 				8E6F0C3D1C86C81B0073B3C5 /* Assets.xcassets */,
 				8E6F0C3F1C86C81B0073B3C5 /* LaunchScreen.storyboard */,
 				8E6F0C421C86C81B0073B3C5 /* Info.plist */,
 				8E6F0C311C86C81B0073B3C5 /* Supporting Files */,
+				8ED56B1A1CB517C600EF8FA3 /* AAViewController.h */,
+				8ED56B1B1CB517C600EF8FA3 /* AAViewController.m */,
 			);
 			path = RSWebView;
 			sourceTree = "<group>";
@@ -405,6 +420,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8ED56B161CB515E200EF8FA3 /* TestWebView.m in Sources */,
 				8E7154541C9F9947000A8BB0 /* NJKWebViewProgress.m in Sources */,
 				8E7154591C9F9947000A8BB0 /* WebViewJavascriptBridgeBase.m in Sources */,
 				8E8EE5051C916918006094A1 /* BBWebViewSSLProtocol.m in Sources */,
@@ -414,7 +430,9 @@
 				8E3039FA1C87D00F00311562 /* RSWebView.m in Sources */,
 				8E7154661C9FC8DE000A8BB0 /* RSControllerTools.m in Sources */,
 				8E7154581C9F9947000A8BB0 /* WebViewJavascriptBridge_JS.m in Sources */,
+				8ED56B1C1CB517C600EF8FA3 /* AAViewController.m in Sources */,
 				8E6F0C361C86C81B0073B3C5 /* AppDelegate.m in Sources */,
+				8ED56B131CB5157800EF8FA3 /* ViewController.m in Sources */,
 				8E7154551C9F9947000A8BB0 /* NJKWebViewProgressView.m in Sources */,
 				8E7154631C9FC71D000A8BB0 /* Example.m in Sources */,
 				8E7154601C9FC5BD000A8BB0 /* TestUtil.m in Sources */,
