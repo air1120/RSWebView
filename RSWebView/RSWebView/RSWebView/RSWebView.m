@@ -180,10 +180,6 @@ static NSString *originalUserAgent;
     [self performSelector:@selector(setupProgressView2) withObject:nil afterDelay:0.1];
     
     [self loadLocalFile:@"setupWebViewJavascriptBridge.js"];
-    [self registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"registerHandlerLog: %@", data);
-        responseCallback(data);
-    }];
 }
 -(void)setupProgressView2{
     CGFloat progressBarHeight = 2.f;

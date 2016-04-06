@@ -17,8 +17,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[TestTableViewController alloc]initWithNibName:@"TestTableViewController" bundle:nil]];
-//    [self.window makeKeyAndVisible];
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[TestTableViewController alloc]initWithNibName:@"TestTableViewController" bundle:nil]];
+    [self.window makeKeyAndVisible];
     
     return YES;
 }

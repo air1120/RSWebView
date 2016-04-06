@@ -94,10 +94,10 @@
 -(void)Test注册ObjCEcho方法到OC中{
     [self pushView];
     [self doSomeThing:^{
-//        [_webView registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
-//            NSLog(@"registerHandlerLog: %@", data);
-//            responseCallback(data);
-//        }];
+        [_webView registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
+            NSLog(@"registerHandlerLog: %@", data);
+            responseCallback(data);
+        }];
     }];
 }
 -(void)Test调用ObjCEcho{
