@@ -33,7 +33,7 @@
 		8E8B94A51C9A9D090020DF60 /* TesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B94A31C9A9D090020DF60 /* TesViewController.m */; };
 		8E8B94A61C9A9D090020DF60 /* TesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B94A41C9A9D090020DF60 /* TesViewController.xib */; };
 		8E8EE5051C916918006094A1 /* BBWebViewSSLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */; };
-		8E99406A1C96A26700C8B93D /* test.js in Resources */ = {isa = PBXBuildFile; fileRef = 8E9940691C96A26700C8B93D /* test.js */; };
+		8ED56B0E1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 8ED56B0D1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js */; };
 		8EE800401CA12ED9000AC147 /* RSWebView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EE800421CA12ED9000AC147 /* RSWebView.strings */; };
 /* End PBXBuildFile section */
 
@@ -101,7 +101,7 @@
 		8E8B94A41C9A9D090020DF60 /* TesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TesViewController.xib; sourceTree = "<group>"; };
 		8E8EE5031C916918006094A1 /* BBWebViewSSLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBWebViewSSLProtocol.h; sourceTree = "<group>"; };
 		8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWebViewSSLProtocol.m; sourceTree = "<group>"; };
-		8E9940691C96A26700C8B93D /* test.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = test.js; sourceTree = "<group>"; };
+		8ED56B0D1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = setupWebViewJavascriptBridge.js; sourceTree = "<group>"; };
 		8EE8003C1CA12E60000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		8EE8003D1CA12E60000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8EE800411CA12ED9000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/RSWebView.strings"; sourceTree = "<group>"; };
@@ -168,7 +168,6 @@
 				8E6F0C3F1C86C81B0073B3C5 /* LaunchScreen.storyboard */,
 				8E6F0C421C86C81B0073B3C5 /* Info.plist */,
 				8E6F0C311C86C81B0073B3C5 /* Supporting Files */,
-				8E9940691C96A26700C8B93D /* test.js */,
 			);
 			path = RSWebView;
 			sourceTree = "<group>";
@@ -202,6 +201,7 @@
 		8E6F0C641C86C85A0073B3C5 /* RSWebView */ = {
 			isa = PBXGroup;
 			children = (
+				8ED56B0D1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js */,
 				8E54EA711C88292C000C9A1B /* WebKit.framework */,
 				8E7154431C9F9947000A8BB0 /* Third */,
 				8E8EE5031C916918006094A1 /* BBWebViewSSLProtocol.h */,
@@ -371,8 +371,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E99406A1C96A26700C8B93D /* test.js in Resources */,
 				8E88924B1C8D5F7300C11C36 /* index.html in Resources */,
+				8ED56B0E1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js in Resources */,
 				8E6F0C411C86C81B0073B3C5 /* LaunchScreen.storyboard in Resources */,
 				8E6F0C3E1C86C81B0073B3C5 /* Assets.xcassets in Resources */,
 				8E42F62B1C9BF42000B38284 /* air2.jpg in Resources */,

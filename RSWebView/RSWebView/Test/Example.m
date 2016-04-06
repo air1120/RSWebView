@@ -85,12 +85,6 @@
         }];
     }];
 }
--(void)Test加载WebViewJavascriptBridge的js{
-    [self pushView];
-    [self doSomeThing:^{
-        [_webView loadLocalFile:@"test.js"];
-    }];
-}
 -(void)Test调用JSEcho{
     [self pushView];
     [self doSomeThing:^{
@@ -98,9 +92,12 @@
     }];
 }
 -(void)Test注册ObjCEcho方法到OC中{
-    [_webView registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"registerHandlerLog: %@", data);
-        responseCallback(data);
+    [self pushView];
+    [self doSomeThing:^{
+        [_webView registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
+            NSLog(@"registerHandlerLog: %@", data);
+            responseCallback(data);
+        }];
     }];
 }
 -(void)Test调用ObjCEcho{
@@ -206,10 +203,10 @@
     });
 }
 -(RSWebView *)iniWebView{
-//    if (_webView) {
-//        return _webView;
-//    }
-    _webView = [[RSWebView alloc]initWithFrame:CGRectMake(0, 0, self.viewController.view.frame.size.width, self.viewController.view.frame.size.height)];
+    if (_webView) {
+        return _webView;
+    }
+    _webView = [[RSWebView alloc]init];
     _webView.delegate = self;
     return _webView;
 }

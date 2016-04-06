@@ -57,7 +57,7 @@ static NSString *originalUserAgent;
 
 @interface RSWebView ()<UIGestureRecognizerDelegate>
 #pragma mark - js交互
-@property id bridge;
+@property id bridgeForWebView;
 
 #pragma mark - 其它部分
 @property (nonatomic)UIScreenEdgePanGestureRecognizer* swipePanGesture;
@@ -98,15 +98,6 @@ static NSString *originalUserAgent;
 }
 @synthesize realWebView = _realWebView;
 @synthesize scalesPageToFit = _scalesPageToFit;
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        [self initWebViewWithFrame:self.bounds];
-        [self setupProgressViewAndJavascriptBridge];
-    }
-    return self;
-}
 - (instancetype)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -130,6 +121,7 @@ static NSString *originalUserAgent;
         default:
             break;
     }
+    
     if (_isUsingUIWebView) {
         [self initUIWebViewWithFrame:frame];
     }else{
@@ -178,14 +170,16 @@ static NSString *originalUserAgent;
     if (_isUsingUIWebView) {
         webViewJavascriptBridge = [WebViewJavascriptBridge bridgeForWebView:_uIWebView];
         [webViewJavascriptBridge setWebViewDelegate:_progressProxy];
-        self.bridge = webViewJavascriptBridge;
+        self.bridgeForWebView = webViewJavascriptBridge;
     }
     else{
         //delegate不能分开设置
         wKWebViewJavascriptBridge = [WKWebViewJavascriptBridge bridgeForWebView:_wKWebView webViewDelegate:_progressProxy];
-        self.bridge = wKWebViewJavascriptBridge;
+        self.bridgeForWebView = wKWebViewJavascriptBridge;
     }
     [self performSelector:@selector(setupProgressView2) withObject:nil afterDelay:0.1];
+    
+    [self loadLocalFile:@"setupWebViewJavascriptBridge.js"];
 }
 -(void)setupProgressView2{
     CGFloat progressBarHeight = 2.f;
@@ -733,18 +727,18 @@ static NSString *originalUserAgent;
 }
 #pragma mark - js交互部分
 - (void)registerHandler:(NSString *)handlerName handler:(WVJBHandler)handler {
-    [self.bridge registerHandler:handlerName handler:handler];
+    [self.bridgeForWebView registerHandler:handlerName handler:handler];
 }
 - (void)callHandler:(NSString *)handlerName {
-    [self.bridge callHandler:handlerName data:nil responseCallback:nil];
+    [self.bridgeForWebView callHandler:handlerName data:nil responseCallback:nil];
 }
 
 - (void)callHandler:(NSString *)handlerName data:(id)data {
-    [self.bridge callHandler:handlerName data:data responseCallback:nil];
+    [self.bridgeForWebView callHandler:handlerName data:data responseCallback:nil];
 }
 
 - (void)callHandler:(NSString *)handlerName data:(id)data responseCallback:(WVJBResponseCallback)responseCallback {
-    [self.bridge callHandler:handlerName data:data responseCallback:responseCallback];
+    [self.bridgeForWebView callHandler:handlerName data:data responseCallback:responseCallback];
 }
 
 #pragma mark - events handler
