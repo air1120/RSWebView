@@ -910,7 +910,7 @@ static NSString *originalUserAgent;
 #pragma mark - setters and getters
 -(UIBarButtonItem*)closeButtonItem{
     if (!_closeButtonItem) {
-        _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"关闭" style:UIBarButtonItemStylePlain target:self action:@selector(closeItemClicked)];
+        _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"close",@"RSWebView", nil)  style:UIBarButtonItemStylePlain target:self action:@selector(closeItemClicked)];
     }
     return _closeButtonItem;
 }
