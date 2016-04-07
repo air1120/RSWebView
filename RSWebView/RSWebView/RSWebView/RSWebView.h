@@ -71,6 +71,11 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 @property (nonatomic, assign,readonly) BOOL isUsingUIWebView;
 -(void)loadLocalFile:(NSString *)fileName baseURL:(NSString *)baseURL;
 -(void)loadLocalFile:(NSString *)fileName;
+#pragma mark - 开关设置
+@property(assign, nonatomic) BOOL closeGesture;
+@property(assign, nonatomic) BOOL closeProgress;
+@property(assign, nonatomic) BOOL closeAdjustTitle;
+@property(assign, nonatomic) BOOL closeAdjustViewport;
 #pragma mark - js交互部分
 - (void)registerHandler:(NSString *)handlerName handler:(WVJBHandler)handler;
 - (void)callHandler:(NSString *)handlerName;

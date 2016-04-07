@@ -160,6 +160,31 @@ static NSString *originalUserAgent;
     self.realWebView = _wKWebView;
 }
 #pragma mark - Add NJKWebViewProgress And WebViewJavascriptBridge ----------------------------------
+-(void)setCloseProgress:(BOOL)closeProgress{
+    _closeProgress = closeProgress;
+    if (_closeProgress) {
+        _progressProxy.wKNavigationDelegate = nil;
+        _progressProxy.webViewProxyDelegate = nil;
+        _progressProxy.progressDelegate = nil;
+        [self.bridgeForWebView setWebViewDelegate:self];
+        _progressView.hidden = YES;
+    }else{
+        _progressProxy.wKNavigationDelegate = self;
+        _progressProxy.webViewProxyDelegate = self;
+        _progressProxy.progressDelegate = self;
+        [self.bridgeForWebView  setWebViewDelegate:_progressProxy];
+        _progressView.hidden = NO;
+    }
+}
+-(void)setCloseGesture:(BOOL)closeGesture{
+    _closeProgress = closeGesture;
+    if (_closeProgress) {
+        self.swipePanGesture.enabled = NO;
+    }
+    else{
+        self.swipePanGesture.enabled = YES;
+    }
+}
 -(void)setupProgressViewAndJavascriptBridge{
     _progressProxy = [[NJKWebViewProgress alloc] init];
     //代理方法必须先设置，不然方法的转发无效
@@ -411,10 +436,13 @@ static NSString *originalUserAgent;
     [self updateNavigationItems];
 }
 - (void)fixViewport{
-    CGFloat width = [self.realWebView size].width;
-    if (width != [[UIScreen mainScreen] bounds].size.width) {
-        [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var __viewport = document.querySelector('meta[name=viewport]'); if(__viewport){__viewport.setAttribute('content', __viewport.getAttribute('content').replace(/width=[^,]+/i,'width=%f'))};", width, nil]];
+    if (!self.closeAdjustViewport) {
+        CGFloat width = [self.realWebView size].width;
+        if (width != [[UIScreen mainScreen] bounds].size.width) {
+            [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var __viewport = document.querySelector('meta[name=viewport]'); if(__viewport){__viewport.setAttribute('content', __viewport.getAttribute('content').replace(/width=[^,]+/i,'width=%f'))};", width, nil]];
+        }
     }
+    
 }
 - (void)callback_webViewDidStartLoad
 {
@@ -939,11 +967,13 @@ static NSString *originalUserAgent;
     }
 }
 -(void)setNavigationTitle{
-    NSString *theTitle=[self stringByEvaluatingJavaScriptFromString:@"document.title"];
-    if (theTitle.length > 10) {
-        theTitle = [[theTitle substringToIndex:9] stringByAppendingString:@"…"];
+    if (!self.closeAdjustTitle) {
+        NSString *theTitle=[self stringByEvaluatingJavaScriptFromString:@"document.title"];
+        if (theTitle.length > 10) {
+            theTitle = [[theTitle substringToIndex:9] stringByAppendingString:@"…"];
+        }
+        self.viewController.title = theTitle;
     }
-    self.viewController.title = theTitle;
 }
 -(void)loadLocalFile:(NSString *)fileName baseURL:(NSString *)baseURL{
     NSString *fullPath = [self fullPathWithFileName:fileName];
