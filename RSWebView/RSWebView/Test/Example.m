@@ -17,102 +17,58 @@
     [self loadMethod];
 }
 -(void)TestInitWithHtml{
-    [self pushView:[self iniWebView]];
-    [self doSomeThing:^{
-        _webView.webSource = [[RSWebSource alloc]initWithHtml:@"<html><div>测试</div></html>" baseURL:@""];
-    }];
+    _webView.webSource = [[RSWebSource alloc]initWithHtml:@"<html><div>测试</div></html>" baseURL:@""];
 }
 -(void)TestWebSource的修改了useragent{
     [RSWebView setUserAgent:@"setUserAgent"];
-    [self pushView:[self iniWebView]];
     _webView.webSource = [[RSWebSource alloc]initWithUrl:@"http://www.baidu.com" method:@"POST" headers:nil body:nil];
 }
 -(void)TestWebSource的没有修改了useragent{
-//    [RSWebView setUserAgent:nil];
-    [self pushView:[self iniWebView]];
     _webView.webSource = [[RSWebSource alloc]initWithUrl:@"http://www.baidu.com" method:@"GET" headers:nil body:nil];
 }
 -(void)TestAlert{
-    [self pushView];
-    [self doSomeThing:^{
-        NSLog(@"是否主线程：%d",[NSThread isMainThread]);
-        NSString *haha = [_webView stringByEvaluatingJavaScriptFromString:@"alert(3+2)"];
-        NSLog(@"alert:%@",haha);
+    [_webView evaluateJavaScript:@"alert(3+2)" completionHandler:^(id  _Nonnull result, NSError * _Nonnull error) {
+        NSLog(@"alert");
     }];
 }
-
--(void)TestGoBack{
-    [self pushView];
-    double delayInSeconds = 5.0;
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delayInSeconds * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSURLRequest *req2 = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://www.taobao.com"]];
-        [_webView loadRequest:req2];
-        dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                if(_webView.canGoBack)
-                    [_webView goBack];
-            });
-            
-        });
-    });
-}
-
 -(void)TestComfirm{
-    [self pushView];
-    [self doSomeThing:^{
-        NSLog(@"是否主线程：%d",[NSThread isMainThread]);
-        NSString *haha = [_webView stringByEvaluatingJavaScriptFromString:@"confirm(\"是否确认\")"];
-        NSLog(@"确认框返回值:%@",haha);
+    [_webView evaluateJavaScript:@"confirm(\"是否确认\")" completionHandler:^(id  _Nonnull result, NSError * _Nonnull error) {
+        NSLog(@"确认框返回值:%@",result);
     }];
+    
 }
 -(void)TestPrompt{
-    [self pushView];
-    [self doSomeThing:^{
-        NSLog(@"是否主线程：%d",[NSThread isMainThread]);
-        NSString *haha = [_webView stringByEvaluatingJavaScriptFromString:@"prompt(\"随便写点儿啥吧\",\"比如我叫啥\")"];
-        NSLog(@"输入框返回值:%@",haha);
+    [_webView evaluateJavaScript:@"prompt(\"随便写点儿啥吧\",\"比如我叫啥\")" completionHandler:^(id  _Nonnull result, NSError * _Nonnull error) {
+        NSLog(@"输入框返回值:%@",result);
     }];
 }
--(void)Test加载京东{
-    [self pushView];
+-(void)TestLoad_JD_COM{
+    _webView.delegate = self;
+    NSString *urlString = @"http://www.jd.com";
+    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     [self doSomeThing:^{
-        _webView.delegate = self;
-        NSString *urlString = @"http://www.jd.com";
-        NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
-        [self doSomeThing:^{
-            [_webView loadRequest:req];
-        }];
+        [_webView loadRequest:req];
     }];
+}
+-(void)TestGoBack{
+    if(_webView.canGoBack)
+        [_webView goBack];
 }
 -(void)Test调用JSEcho{
-    [self pushView];
-    [self doSomeThing:^{
-        [_webView callHandler:@"JS Echo" data:@"success"];
-    }];
+    [_webView callHandler:@"JS Echo" data:@"success"];
 }
 -(void)Test注册ObjCEcho方法到OC中{
-    [self pushView];
-    [self doSomeThing:^{
-        [_webView registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
-            NSLog(@"registerHandlerLog: %@", data);
-            responseCallback(data);
-        }];
+    [_webView registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
+        NSLog(@"registerHandlerLog: %@", data);
+        responseCallback(data);
     }];
 }
--(void)Test调用ObjCEcho{
-//    [self pushView];
-//    [self doSomeThing:^{
-        [_webView stringByEvaluatingJavaScriptFromString:@"testEcho()"];
-//    }];
+-(void)TestClickWebView_Button_Call_ObjCEcho{
+    [_webView loadLocalFile:@"TestSetupWebViewJavascriptBridge.html"];
 }
 -(void)Test测试evaluateJavaScript{
-    [self pushView];
-    [self doSomeThing:^{
-        [_webView evaluateJavaScript:@"prompt(\"随便写点儿啥吧\",\"我是内容\")" completionHandler:^(id  _Nonnull result, NSError * _Nonnull error) {
-            NSLog(@"evaluateJavaScript返回值:%@",result);
-        }];
-        
+    [_webView evaluateJavaScript:@"prompt(\"随便写点儿啥吧\",\"我是内容\")" completionHandler:^(id  _Nonnull result, NSError * _Nonnull error) {
+        NSLog(@"evaluateJavaScript返回值:%@",result);
     }];
 }
 -(void)Test测试Viewport{
@@ -203,11 +159,10 @@
     });
 }
 -(RSWebView *)iniWebView{
+    _webView.delegate = self;
     if (_webView) {
         return _webView;
     }
-    _webView = [[RSWebView alloc]init];
-    _webView.delegate = self;
     return _webView;
 }
 -(void)pushView{

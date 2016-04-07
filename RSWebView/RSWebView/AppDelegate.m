@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "TestTableViewController.h"
+#import "TestMyTableViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[TestTableViewController alloc]initWithNibName:@"TestTableViewController" bundle:nil]];
+    self.window.rootViewController = [[UINavigationController alloc]initWithRootViewController:[[TestMyTableViewController alloc]initWithNibName:@"TestMyTableViewController" bundle:nil]];
     [self.window makeKeyAndVisible];
     
     return YES;

@@ -26,17 +26,17 @@
 		8E7154601C9FC5BD000A8BB0 /* TestUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E71545F1C9FC5BD000A8BB0 /* TestUtil.m */; };
 		8E7154631C9FC71D000A8BB0 /* Example.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7154621C9FC71D000A8BB0 /* Example.m */; };
 		8E7154661C9FC8DE000A8BB0 /* RSControllerTools.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E7154651C9FC8DE000A8BB0 /* RSControllerTools.m */; };
-		8E7848711C97A65200778D7A /* TestTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E78486E1C97A65200778D7A /* TestTableViewController.m */; };
-		8E7848721C97A65200778D7A /* TestTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E78486F1C97A65200778D7A /* TestTableViewController.xib */; };
 		8E7848731C97A65200778D7A /* weixin.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E7848701C97A65200778D7A /* weixin.json */; };
 		8E88924B1C8D5F7300C11C36 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 8E88924A1C8D5F7300C11C36 /* index.html */; };
 		8E8B94A51C9A9D090020DF60 /* TesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8B94A31C9A9D090020DF60 /* TesViewController.m */; };
 		8E8B94A61C9A9D090020DF60 /* TesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E8B94A41C9A9D090020DF60 /* TesViewController.xib */; };
 		8E8EE5051C916918006094A1 /* BBWebViewSSLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */; };
-		8ED56B0E1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js in Resources */ = {isa = PBXBuildFile; fileRef = 8ED56B0D1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js */; };
+		8E9113741CB5FB19001503F7 /* TestMyTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E9113721CB5FB19001503F7 /* TestMyTableViewController.m */; };
+		8E9113751CB5FB19001503F7 /* TestMyTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8E9113731CB5FB19001503F7 /* TestMyTableViewController.xib */; };
 		8ED56B131CB5157800EF8FA3 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED56B121CB5157800EF8FA3 /* ViewController.m */; };
 		8ED56B161CB515E200EF8FA3 /* TestWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED56B151CB515E200EF8FA3 /* TestWebView.m */; };
 		8ED56B1C1CB517C600EF8FA3 /* AAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8ED56B1B1CB517C600EF8FA3 /* AAViewController.m */; };
+		8ED56B841CB53F3900EF8FA3 /* TestSetupWebViewJavascriptBridge.html in Resources */ = {isa = PBXBuildFile; fileRef = 8ED56B831CB53F3900EF8FA3 /* TestSetupWebViewJavascriptBridge.html */; };
 		8EE800401CA12ED9000AC147 /* RSWebView.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8EE800421CA12ED9000AC147 /* RSWebView.strings */; };
 /* End PBXBuildFile section */
 
@@ -94,9 +94,6 @@
 		8E7154621C9FC71D000A8BB0 /* Example.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Example.m; sourceTree = "<group>"; };
 		8E7154641C9FC8DE000A8BB0 /* RSControllerTools.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSControllerTools.h; sourceTree = "<group>"; };
 		8E7154651C9FC8DE000A8BB0 /* RSControllerTools.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSControllerTools.m; sourceTree = "<group>"; };
-		8E78486D1C97A65200778D7A /* TestTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestTableViewController.h; sourceTree = "<group>"; };
-		8E78486E1C97A65200778D7A /* TestTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestTableViewController.m; sourceTree = "<group>"; };
-		8E78486F1C97A65200778D7A /* TestTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestTableViewController.xib; sourceTree = "<group>"; };
 		8E7848701C97A65200778D7A /* weixin.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = weixin.json; sourceTree = "<group>"; };
 		8E88924A1C8D5F7300C11C36 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
 		8E8B94A21C9A9D090020DF60 /* TesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TesViewController.h; sourceTree = "<group>"; };
@@ -104,13 +101,16 @@
 		8E8B94A41C9A9D090020DF60 /* TesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TesViewController.xib; sourceTree = "<group>"; };
 		8E8EE5031C916918006094A1 /* BBWebViewSSLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BBWebViewSSLProtocol.h; sourceTree = "<group>"; };
 		8E8EE5041C916918006094A1 /* BBWebViewSSLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BBWebViewSSLProtocol.m; sourceTree = "<group>"; };
-		8ED56B0D1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = setupWebViewJavascriptBridge.js; sourceTree = "<group>"; };
+		8E9113711CB5FB19001503F7 /* TestMyTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestMyTableViewController.h; sourceTree = "<group>"; };
+		8E9113721CB5FB19001503F7 /* TestMyTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestMyTableViewController.m; sourceTree = "<group>"; };
+		8E9113731CB5FB19001503F7 /* TestMyTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TestMyTableViewController.xib; sourceTree = "<group>"; };
 		8ED56B111CB5157800EF8FA3 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		8ED56B121CB5157800EF8FA3 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		8ED56B141CB515E200EF8FA3 /* TestWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestWebView.h; sourceTree = "<group>"; };
 		8ED56B151CB515E200EF8FA3 /* TestWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestWebView.m; sourceTree = "<group>"; };
 		8ED56B1A1CB517C600EF8FA3 /* AAViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AAViewController.h; sourceTree = "<group>"; };
 		8ED56B1B1CB517C600EF8FA3 /* AAViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AAViewController.m; sourceTree = "<group>"; };
+		8ED56B831CB53F3900EF8FA3 /* TestSetupWebViewJavascriptBridge.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = TestSetupWebViewJavascriptBridge.html; sourceTree = "<group>"; };
 		8EE8003C1CA12E60000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		8EE8003D1CA12E60000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		8EE800411CA12ED9000AC147 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/RSWebView.strings"; sourceTree = "<group>"; };
@@ -216,7 +216,6 @@
 		8E6F0C641C86C85A0073B3C5 /* RSWebView */ = {
 			isa = PBXGroup;
 			children = (
-				8ED56B0D1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js */,
 				8E54EA711C88292C000C9A1B /* WebKit.framework */,
 				8E7154431C9F9947000A8BB0 /* Third */,
 				8E8EE5031C916918006094A1 /* BBWebViewSSLProtocol.h */,
@@ -224,6 +223,7 @@
 				8E3039F81C87D00F00311562 /* RSWebView.h */,
 				8E3039F91C87D00F00311562 /* RSWebView.m */,
 				8EE800421CA12ED9000AC147 /* RSWebView.strings */,
+				8ED56B831CB53F3900EF8FA3 /* TestSetupWebViewJavascriptBridge.html */,
 			);
 			path = RSWebView;
 			sourceTree = "<group>";
@@ -266,9 +266,6 @@
 		8E78486C1C97A65200778D7A /* Test */ = {
 			isa = PBXGroup;
 			children = (
-				8E78486D1C97A65200778D7A /* TestTableViewController.h */,
-				8E78486E1C97A65200778D7A /* TestTableViewController.m */,
-				8E78486F1C97A65200778D7A /* TestTableViewController.xib */,
 				8E7848701C97A65200778D7A /* weixin.json */,
 				8E8B94A21C9A9D090020DF60 /* TesViewController.h */,
 				8E8B94A31C9A9D090020DF60 /* TesViewController.m */,
@@ -279,6 +276,9 @@
 				8E7154651C9FC8DE000A8BB0 /* RSControllerTools.m */,
 				8E7154611C9FC71D000A8BB0 /* Example.h */,
 				8E7154621C9FC71D000A8BB0 /* Example.m */,
+				8E9113711CB5FB19001503F7 /* TestMyTableViewController.h */,
+				8E9113721CB5FB19001503F7 /* TestMyTableViewController.m */,
+				8E9113731CB5FB19001503F7 /* TestMyTableViewController.xib */,
 			);
 			path = Test;
 			sourceTree = "<group>";
@@ -387,13 +387,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E88924B1C8D5F7300C11C36 /* index.html in Resources */,
-				8ED56B0E1CB50AEE00EF8FA3 /* setupWebViewJavascriptBridge.js in Resources */,
 				8E6F0C411C86C81B0073B3C5 /* LaunchScreen.storyboard in Resources */,
 				8E6F0C3E1C86C81B0073B3C5 /* Assets.xcassets in Resources */,
 				8E42F62B1C9BF42000B38284 /* air2.jpg in Resources */,
 				8EE800401CA12ED9000AC147 /* RSWebView.strings in Resources */,
-				8E7848721C97A65200778D7A /* TestTableViewController.xib in Resources */,
+				8ED56B841CB53F3900EF8FA3 /* TestSetupWebViewJavascriptBridge.html in Resources */,
 				8E6F0C3C1C86C81B0073B3C5 /* Main.storyboard in Resources */,
+				8E9113751CB5FB19001503F7 /* TestMyTableViewController.xib in Resources */,
 				8E8B94A61C9A9D090020DF60 /* TesViewController.xib in Resources */,
 				8E7848731C97A65200778D7A /* weixin.json in Resources */,
 			);
@@ -426,7 +426,6 @@
 				8E8EE5051C916918006094A1 /* BBWebViewSSLProtocol.m in Sources */,
 				8E8B94A51C9A9D090020DF60 /* TesViewController.m in Sources */,
 				8E7154571C9F9947000A8BB0 /* WebViewJavascriptBridge.m in Sources */,
-				8E7848711C97A65200778D7A /* TestTableViewController.m in Sources */,
 				8E3039FA1C87D00F00311562 /* RSWebView.m in Sources */,
 				8E7154661C9FC8DE000A8BB0 /* RSControllerTools.m in Sources */,
 				8E7154581C9F9947000A8BB0 /* WebViewJavascriptBridge_JS.m in Sources */,
@@ -436,6 +435,7 @@
 				8E7154551C9F9947000A8BB0 /* NJKWebViewProgressView.m in Sources */,
 				8E7154631C9FC71D000A8BB0 /* Example.m in Sources */,
 				8E7154601C9FC5BD000A8BB0 /* TestUtil.m in Sources */,
+				8E9113741CB5FB19001503F7 /* TestMyTableViewController.m in Sources */,
 				8E6F0C331C86C81B0073B3C5 /* main.m in Sources */,
 				8E71545A1C9F9947000A8BB0 /* WKWebViewJavascriptBridge.m in Sources */,
 			);

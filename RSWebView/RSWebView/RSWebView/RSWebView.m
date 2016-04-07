@@ -179,14 +179,6 @@ static NSString *originalUserAgent;
     }
     [self performSelector:@selector(setupProgressView2) withObject:nil afterDelay:0.1];
     
-    [self loadLocalFile:@"setupWebViewJavascriptBridge.js"];
-    
-    [self registerHandler:@"ObjC Echo" handler:^(id data, WVJBResponseCallback responseCallback) {
-        NSLog(@"this is ObjC Echo: %@", data);
-        responseCallback(data);
-    }];
-    [self performSelector:@selector(stringByEvaluatingJavaScriptFromString:) withObject:@"setupWebViewJavascriptBridge(function(bridge){bridge.callHandler('ObjC Echo',function responseCallback(responseData){console.log(\"JS received response:\",responseData)})})" afterDelay:10];
-    
 }
 -(void)setupProgressView2{
     CGFloat progressBarHeight = 2.f;
@@ -331,9 +323,11 @@ static NSString *originalUserAgent;
 {
     NSURL *url = navigationAction.request.URL;
     NSString *urlString = (url) ? url.absoluteString : @"";
-    
+    if ([@"about:blank" isEqualToString:urlString] || (urlString.length>=7&&[@"file" isEqualToString:[urlString substringToIndex:4]])) {
+        
+    }
     // iTunes: App Store link
-    if ([self validateItunesUrl:urlString]) {
+    else if ([self validateItunesUrl:urlString]) {
         [[UIApplication sharedApplication] openURL:url];
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
