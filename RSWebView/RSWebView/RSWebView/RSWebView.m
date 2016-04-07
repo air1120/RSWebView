@@ -127,6 +127,9 @@ static NSString *originalUserAgent;
     }else{
         [self initWKWebViewWithFrame:frame];
     }
+    self.userInteractionEnabled = YES;
+    [self addGestureRecognizer:self.swipePanGesture];
+    self.swipePanGesture.delegate = self;
     
     self.scalesPageToFit = YES;
     [self addSubview:self.realWebView];
@@ -136,9 +139,6 @@ static NSString *originalUserAgent;
 -(void)initUIWebViewWithFrame:(CGRect)frame{
     frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     UIWebView *webView =[[UIWebView alloc]initWithFrame:frame];
-    self.userInteractionEnabled = YES;
-    [self addGestureRecognizer:self.swipePanGesture];
-    self.swipePanGesture.delegate = self;
     _uIWebView = webView;
     self.realWebView = _uIWebView;
 }
@@ -319,8 +319,21 @@ static NSString *originalUserAgent;
 }
 
 #pragma mark- WKNavigationDelegate
+
 -(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
+    switch (navigationAction.navigationType) {
+        case WKNavigationTypeLinkActivated:
+        case WKNavigationTypeFormSubmitted:
+        case WKNavigationTypeOther: {
+            [self pushCurrentSnapshotViewWithRequest:navigationAction.request];
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    
     NSURL *url = navigationAction.request.URL;
     NSString *urlString = (url) ? url.absoluteString : @"";
     if ([@"about:blank" isEqualToString:urlString] || (urlString.length>=7&&[@"file" isEqualToString:[urlString substringToIndex:4]])) {
@@ -776,7 +789,7 @@ static NSString *originalUserAgent;
     center.x -= 60;
     self.prevSnapShotView.center = center;
     self.prevSnapShotView.alpha = 1;
-    self.superview.backgroundColor = [UIColor blackColor];
+    self.superview.backgroundColor = [UIColor whiteColor];
     
     [self.superview addSubview:self.prevSnapShotView];
     [self.superview addSubview:self.swipingBackgoundView];
