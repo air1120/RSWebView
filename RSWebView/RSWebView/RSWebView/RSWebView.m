@@ -163,11 +163,12 @@ static NSString *originalUserAgent;
 -(void)setCloseProgress:(BOOL)closeProgress{
     _closeProgress = closeProgress;
     if (_closeProgress) {
+        _progressView.hidden = YES;
         _progressProxy.wKNavigationDelegate = nil;
         _progressProxy.webViewProxyDelegate = nil;
         _progressProxy.progressDelegate = nil;
         [self.bridgeForWebView setWebViewDelegate:self];
-        _progressView.hidden = YES;
+        
     }else{
         _progressProxy.wKNavigationDelegate = self;
         _progressProxy.webViewProxyDelegate = self;
@@ -202,14 +203,9 @@ static NSString *originalUserAgent;
         wKWebViewJavascriptBridge = [WKWebViewJavascriptBridge bridgeForWebView:_wKWebView webViewDelegate:_progressProxy];
         self.bridgeForWebView = wKWebViewJavascriptBridge;
     }
-    [self performSelector:@selector(setupProgressView2) withObject:nil afterDelay:0.1];
-    
-}
--(void)setupProgressView2{
     CGFloat progressBarHeight = 2.f;
-    NSLog(@"%@",NSStringFromUIEdgeInsets(self.scrollView.contentInset));
-    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:CGRectMake(0,self.scrollView.contentInset.top, self.frame.size.width, progressBarHeight)];
-    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:CGRectMake(0,0, self.frame.size.width, progressBarHeight)];
+    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     [self addSubview:_progressView];
 }
 #pragma mark - NJKWebViewProgressDelegate
