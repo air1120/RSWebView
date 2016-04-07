@@ -44,6 +44,8 @@
 }
 -(void)TestLoad_JD_COM{
     _webView.delegate = self;
+    _webView.closeProgress = true;
+    _webView.closeProgress = false;
     NSString *urlString = @"http://www.jd.com";
     NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:urlString]];
     [self doSomeThing:^{

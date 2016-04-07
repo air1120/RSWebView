@@ -13,6 +13,7 @@
 #import <WebKit/WKWebViewConfiguration.h>
 #import <WebKit/WKUserContentController.h>
 #import "BBWebViewSSLProtocol.h"
+#define IOS8x ([[UIDevice currentDevice].systemVersion floatValue] >= 8.0)
 #define messengeAlert @""
 #define boundsWidth self.superview.bounds.size.width
 #define boundsHeight self.superview.bounds.size.height
@@ -85,6 +86,9 @@ static NSString *originalUserAgent;
  *  background alpha black view
  */
 @property (nonatomic)UIView* swipingBackgoundView;
+@property (strong, nonatomic) UIProgressView *progressViewForWKWebView;
+@property (assign, nonatomic) NSUInteger loadCount;
+
 @end
 
 @implementation RSWebView
@@ -109,8 +113,7 @@ static NSString *originalUserAgent;
 }
 -(void)initWebViewWithFrame:(CGRect)frame{
     
-    BOOL isIOS8AndGreater = [[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0;
-    _isUsingUIWebView = !isIOS8AndGreater;
+    _isUsingUIWebView = !IOS8x;
     switch (webViewType) {
         case RSWebViewTypeUIWebView:
             _isUsingUIWebView = YES;
@@ -159,54 +162,86 @@ static NSString *originalUserAgent;
     [_wKWebView setFrame:frame];
     self.realWebView = _wKWebView;
 }
+#pragma mark - Progress for WKWebView
+- (void)setupProgess{
+    // 进度条
+    UIProgressView *progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 0, self.frame.size.width, 0)];
+    UIColor *tintColor = [UIColor colorWithRed:22.f / 255.f green:126.f / 255.f blue:251.f / 255.f alpha:1.0]; // iOS7 Safari bar color
+    progressView.tintColor = tintColor;
+    progressView.trackTintColor = [UIColor whiteColor];
+    progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+    [_wKWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+    [self addSubview:progressView];
+    self.progressViewForWKWebView = progressView;
+}
+// 计算wkWebView进度条
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
+    if (object == _wKWebView && [keyPath isEqualToString:@"estimatedProgress"]) {
+        CGFloat newprogress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
+        if (newprogress == 1) {
+            self.progressViewForWKWebView.hidden = YES;
+            [self.progressViewForWKWebView setProgress:0 animated:NO];
+        }else {
+            self.progressViewForWKWebView.hidden = NO;
+            [self.progressViewForWKWebView setProgress:newprogress<0.1?0.1:newprogress animated:YES];
+        }
+    }
+}
+// 计算webView进度条
+- (void)setLoadCount:(NSUInteger)loadCount {
+    _loadCount = loadCount;
+    if (loadCount == 0) {
+        self.progressViewForWKWebView.hidden = YES;
+        [self.progressViewForWKWebView setProgress:0 animated:NO];
+    }else {
+        self.progressViewForWKWebView.hidden = NO;
+        CGFloat oldP = self.progressViewForWKWebView.progress;
+        CGFloat newP = (1.0 - oldP) / (loadCount + 1) + oldP;
+        if (newP > 0.95) {
+            newP = 0.95;
+        }
+        [self.progressViewForWKWebView setProgress:newP animated:YES];
+    }
+}
+// 记得取消监听
+- (void)dealloc {
+    if (_wKWebView) {
+        [_wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
+    }
+}
+
 #pragma mark - Add NJKWebViewProgress And WebViewJavascriptBridge ----------------------------------
--(void)setCloseProgress:(BOOL)closeProgress{
-    _closeProgress = closeProgress;
-    if (_closeProgress) {
-        _progressView.hidden = YES;
-        _progressProxy.wKNavigationDelegate = nil;
-        _progressProxy.webViewProxyDelegate = nil;
-        _progressProxy.progressDelegate = nil;
-        [self.bridgeForWebView setWebViewDelegate:self];
-        
-    }else{
+
+-(void)setupProgressViewAndJavascriptBridge{
+    
+    
+    if (_isUsingUIWebView) {
+        _progressProxy = [[NJKWebViewProgress alloc] init];
+        //代理方法必须先设置，不然方法的转发无效
         _progressProxy.wKNavigationDelegate = self;
         _progressProxy.webViewProxyDelegate = self;
         _progressProxy.progressDelegate = self;
-        [self.bridgeForWebView  setWebViewDelegate:_progressProxy];
-        _progressView.hidden = NO;
-    }
-}
--(void)setCloseGesture:(BOOL)closeGesture{
-    _closeProgress = closeGesture;
-    if (_closeProgress) {
-        self.swipePanGesture.enabled = NO;
-    }
-    else{
-        self.swipePanGesture.enabled = YES;
-    }
-}
--(void)setupProgressViewAndJavascriptBridge{
-    _progressProxy = [[NJKWebViewProgress alloc] init];
-    //代理方法必须先设置，不然方法的转发无效
-    _progressProxy.wKNavigationDelegate = self;
-    _progressProxy.webViewProxyDelegate = self;
-    _progressProxy.progressDelegate = self;
-    
-    if (_isUsingUIWebView) {
+        
         webViewJavascriptBridge = [WebViewJavascriptBridge bridgeForWebView:_uIWebView];
         [webViewJavascriptBridge setWebViewDelegate:_progressProxy];
         self.bridgeForWebView = webViewJavascriptBridge;
+        
+        CGFloat progressBarHeight = 2.f;
+        _progressView = [[NJKWebViewProgressView alloc] initWithFrame:CGRectMake(0,0, self.frame.size.width, progressBarHeight)];
+        _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+        [self addSubview:_progressView];
+        
     }
     else{
+        
         //delegate不能分开设置
-        wKWebViewJavascriptBridge = [WKWebViewJavascriptBridge bridgeForWebView:_wKWebView webViewDelegate:_progressProxy];
+        wKWebViewJavascriptBridge = [WKWebViewJavascriptBridge bridgeForWebView:_wKWebView webViewDelegate:self];
         self.bridgeForWebView = wKWebViewJavascriptBridge;
+        
+        [self setupProgess];
     }
-    CGFloat progressBarHeight = 2.f;
-    _progressView = [[NJKWebViewProgressView alloc] initWithFrame:CGRectMake(0,0, self.frame.size.width, progressBarHeight)];
-    _progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    [self addSubview:_progressView];
+    
+    
 }
 #pragma mark - NJKWebViewProgressDelegate
 -(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
@@ -222,10 +257,12 @@ static NSString *originalUserAgent;
 }
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
+    self.loadCount ++;
     [self callback_webViewDidStartLoad];
 }
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
+    self.loadCount --;
     [self callback_webViewDidFailLoadWithError:error];
     NSLog(@"请求失败:%@",error);
     if (error.code == -1009) {
@@ -419,6 +456,7 @@ static NSString *originalUserAgent;
 
 - (void)callback_webViewDidFinishLoad
 {
+    self.loadCount --;
     [self actionAfterFinish];
     if([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
     {
@@ -908,6 +946,41 @@ static NSString *originalUserAgent;
     return _snapShotsArray;
 }
 #pragma mark - setters and getters
+-(void)setCloseProgress:(BOOL)closeProgress{
+    _closeProgress = closeProgress;
+    if (_isUsingUIWebView) {
+        if (_closeProgress) {
+            _progressView.hidden = YES;
+            _progressProxy.wKNavigationDelegate = nil;
+            _progressProxy.webViewProxyDelegate = nil;
+            _progressProxy.progressDelegate = nil;
+            [self.bridgeForWebView setWebViewDelegate:self];
+            
+        }else{
+            _progressProxy.wKNavigationDelegate = self;
+            _progressProxy.webViewProxyDelegate = self;
+            _progressProxy.progressDelegate = self;
+            [self.bridgeForWebView  setWebViewDelegate:_progressProxy];
+            _progressView.hidden = NO;
+        }
+    }else{
+        if (_closeProgress) {
+            [_wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
+        }else{
+            [_wKWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+        }
+        self.progressViewForWKWebView.hidden = _closeProgress;
+    }
+}
+-(void)setCloseGesture:(BOOL)closeGesture{
+    _closeProgress = closeGesture;
+    if (_closeProgress) {
+        self.swipePanGesture.enabled = NO;
+    }
+    else{
+        self.swipePanGesture.enabled = YES;
+    }
+}
 -(UIBarButtonItem*)closeButtonItem{
     if (!_closeButtonItem) {
         _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"close",@"RSWebView", nil)  style:UIBarButtonItemStylePlain target:self action:@selector(closeItemClicked)];

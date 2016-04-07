@@ -29,7 +29,7 @@
     ex.viewController = self;
     webView = [[RSWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];
     [self.footView addSubview:webView];
-    webView.scrollView.backgroundColor = [UIColor redColor];
+    webView.scrollView.backgroundColor = [UIColor whiteColor];
     ex.webView = webView;
 }
 - (void)didReceiveMemoryWarning {
