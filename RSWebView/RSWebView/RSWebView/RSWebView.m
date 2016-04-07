@@ -398,8 +398,7 @@ static NSString *originalUserAgent;
     [self updateNavigationItems];
 }
 - (void)fixViewport{
-    CGFloat width = self.bounds.size.width;
-    
+    CGFloat width = [self.realWebView size].width;
     if (width != [[UIScreen mainScreen] bounds].size.width) {
         [self stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"var __viewport = document.querySelector('meta[name=viewport]'); if(__viewport){__viewport.setAttribute('content', __viewport.getAttribute('content').replace(/width=[^,]+/i,'width=%f'))};", width, nil]];
     }
@@ -639,42 +638,43 @@ static NSString *originalUserAgent;
     }
     else
     {
-        if(_scalesPageToFit == scalesPageToFit)
-        {
-            return;
-        }
-        
-        WKWebView* webView = _wKWebView;
-        
-        NSString *jScript = @"var meta = document.createElement('meta'); \
-        meta.name = 'viewport'; \
-        meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; \
-        var head = document.getElementsByTagName('head')[0];\
-        head.appendChild(meta);";
-        
-        if(scalesPageToFit)
-        {
-            //WKUserScriptInjectionTimeAtDocumentEnd说明是加载完后执行，还有WKUserScriptInjectionTimeAtDocumentStart可用
-            WKUserScript *wkUScript = [[NSClassFromString(@"WKUserScript") alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
-            [webView.configuration.userContentController addUserScript:wkUScript];
-        }
-        else
-        {
-            NSMutableArray* array = [NSMutableArray arrayWithArray:webView.configuration.userContentController.userScripts];
-            for (WKUserScript *wkUScript in array)
-            {
-                if([wkUScript.source isEqual:jScript])
-                {
-                    [array removeObject:wkUScript];
-                    break;
-                }
-            }
-            for (WKUserScript *wkUScript in array)
-            {
-                [webView.configuration.userContentController addUserScript:wkUScript];
-            }
-        }
-        _scalesPageToFit = scalesPageToFit;
+        //taobao.com等网站会有问题
+        //        if(_scalesPageToFit == scalesPageToFit)
+        //        {
+        //            return;
+        //        }
+        //
+        //        WKWebView* webView = _wKWebView;
+        //
+        //        NSString *jScript = @"var meta = document.createElement('meta'); \
+        //        meta.name = 'viewport'; \
+        //        meta.content = 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'; \
+        //        var head = document.getElementsByTagName('head')[0];\
+        //        head.appendChild(meta);";
+        //
+        //        if(scalesPageToFit)
+        //        {
+        //            //WKUserScriptInjectionTimeAtDocumentEnd说明是加载完后执行，还有WKUserScriptInjectionTimeAtDocumentStart可用
+        //            WKUserScript *wkUScript = [[NSClassFromString(@"WKUserScript") alloc] initWithSource:jScript injectionTime:WKUserScriptInjectionTimeAtDocumentEnd forMainFrameOnly:NO];
+        //            [webView.configuration.userContentController addUserScript:wkUScript];
+        //        }
+        //        else
+        //        {
+        //            NSMutableArray* array = [NSMutableArray arrayWithArray:webView.configuration.userContentController.userScripts];
+        //            for (WKUserScript *wkUScript in array)
+        //            {
+        //                if([wkUScript.source isEqual:jScript])
+        //                {
+        //                    [array removeObject:wkUScript];
+        //                    break;
+        //                }
+        //            }
+        //            for (WKUserScript *wkUScript in array)
+        //            {
+        //                [webView.configuration.userContentController addUserScript:wkUScript];
+        //            }
+        //        }
+        //        _scalesPageToFit = scalesPageToFit;
     }
 }
 #pragma mark-  如果没有找到方法 去realWebView 中调用，http://www.cnblogs.com/biosli/p/NSObject_inherit_2.html
