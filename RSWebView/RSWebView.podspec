@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name     = 'RSWebView'
-  s.version  = '1.0.5'
+  s.version  = '1.0.6'
   s.platform = :ios, '7.0'
   s.license  = 'MIT'
   s.summary  = 'UIWebView switched automatically into WKWebView'
