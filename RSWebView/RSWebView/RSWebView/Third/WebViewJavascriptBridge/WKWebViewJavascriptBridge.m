@@ -12,7 +12,7 @@
 
 @implementation WKWebViewJavascriptBridge {
     WKWebView* _webView;
-    id<WKNavigationDelegate> _webViewDelegate;
+    __weak id<WKNavigationDelegate> _webViewDelegate;
     long _uniqueId;
     WebViewJavascriptBridgeBase *_base;
 }
