@@ -38,7 +38,7 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 
 @property (nonatomic, strong) id realWebView;
 
-@property (nullable, nonatomic, strong) id <UIWebViewDelegate,WKNavigationDelegate> delegate;
+@property (nullable, nonatomic, weak) id <UIWebViewDelegate,WKNavigationDelegate> delegate;
 
 @property (nonatomic, strong) UIScrollView *scrollView ;
 

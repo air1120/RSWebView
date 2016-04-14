@@ -438,7 +438,7 @@ static NSString *originalUserAgent;
 #pragma mark- callback_WKNavigationDelegate
 -(void)callback_webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
-    if([self.delegate respondsToSelector:@selector(webView:decidePolicyForNavigationAction:decisionHandler:)])
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(webView:decidePolicyForNavigationAction:decisionHandler:)])
     {
         [self.delegate webView:_wKWebView decidePolicyForNavigationAction:navigationAction decisionHandler:decisionHandler];
     }else{
@@ -447,7 +447,7 @@ static NSString *originalUserAgent;
 }
 -(void)callback_webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
-    if ([self.delegate respondsToSelector:@selector(webView:didFinishNavigation:)]) {
+    if (self.delegate&&[self.delegate respondsToSelector:@selector(webView:didFinishNavigation:)]) {
         [self.delegate webView:webView didFinishNavigation:navigation];
     }
 }
@@ -458,7 +458,7 @@ static NSString *originalUserAgent;
 {
     self.loadCount --;
     [self actionAfterFinish];
-    if([self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
     {
         [self.delegate webViewDidFinishLoad:self.realWebView];
     }
@@ -480,14 +480,14 @@ static NSString *originalUserAgent;
 }
 - (void)callback_webViewDidStartLoad
 {
-    if([self.delegate respondsToSelector:@selector(webViewDidStartLoad:)])
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(webViewDidStartLoad:)])
     {
         [self.delegate webViewDidStartLoad:self.realWebView];
     }
 }
 - (void)callback_webViewDidFailLoadWithError:(NSError *)error
 {
-    if([self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(webView:didFailLoadWithError:)])
     {
         [self.delegate webView:self.realWebView didFailLoadWithError:error];
     }
@@ -495,7 +495,7 @@ static NSString *originalUserAgent;
 -(BOOL)callback_webViewShouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(NSInteger)navigationType
 {
     BOOL resultBOOL = YES;
-    if([self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
+    if(self.delegate&&[self.delegate respondsToSelector:@selector(webView:shouldStartLoadWithRequest:navigationType:)])
     {
         if(navigationType == -1) {
             navigationType = UIWebViewNavigationTypeOther;
@@ -762,7 +762,9 @@ static NSString *originalUserAgent;
     }
     if(hasResponds == NO)
     {
-        hasResponds = [self.delegate respondsToSelector:aSelector];
+        if(self.delegate){
+            hasResponds = [self.delegate respondsToSelector:aSelector];
+        }
     }
     return hasResponds;
 }
@@ -777,7 +779,9 @@ static NSString *originalUserAgent;
         }
         else
         {
-            methodSign = [(id)self.delegate methodSignatureForSelector:selector];
+            if(self.delegate){
+                methodSign = [(id)self.delegate methodSignatureForSelector:selector];
+            }
         }
     }
     return methodSign;
@@ -790,7 +794,10 @@ static NSString *originalUserAgent;
     }
     else
     {
-        [invocation invokeWithTarget:self.delegate];
+        
+        if(self.delegate){
+            [invocation invokeWithTarget:self.delegate];
+        }
     }
 }
 #pragma mark - 支持手势滑动后退，后退时显示上个页面截图（类似safari，wechat）
