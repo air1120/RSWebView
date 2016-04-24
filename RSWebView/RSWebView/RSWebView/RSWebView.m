@@ -629,21 +629,20 @@ static NSString *originalUserAgent;
     }
     else
     {
-        __block NSString* result = nil;
-        __block BOOL isRunning = YES;
-        dispatch_async(dispatch_get_main_queue(), ^{
+//        __block NSString* result = nil;
+//        __block BOOL isRunning = YES;
+//        dispatch_async(dispatch_get_main_queue(), ^{
             [(WKWebView*)self.realWebView evaluateJavaScript:javaScriptString completionHandler:^(id obj, NSError *error) {
-                result = obj;
-                isRunning = NO;
+//                result = obj;
+//                isRunning = NO;
             }];
-        });
-        while (isRunning==YES) {
-            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-        }
-        return result;
+//        });
+//        while (isRunning==YES) {
+//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+//        }
+        return nil;
     }
 }
-
 // 如果在WebView初始化的时候调用该方法，涉及界面修改的话会出错。
 -(id)stringByEvaluatingJavaScriptFromStringForUIWebView:(NSString *)script{
     //UI run main thread
