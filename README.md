@@ -2,7 +2,7 @@
 UIWebView和WKWebView的混合框架,UIWebView自动切换到WKWebView。
 ##支持情况说明：
 * UIWebView在iOS8及以后自动切换到WKWebView
-* 支持设置html, baseUrl
+* 支持设置html, url
 * 可注入js脚本
 * 可修改WebView请求的userAgent
 * 支持忽略ssl验证, 通过 `addTrustedDomain` 添加
@@ -57,5 +57,5 @@ _webView.webSource = [[RSWebSource alloc]initWithHtml:@"<html><div>测试</div><
 webView.trustedScheme = @[@"file",@"mqq"];
 ```
 trustedScheme不设置，则不会限制。
-
-
+###存在的问题：
+stringByEvaluatingJavaScriptFromString的方法执行alert,	comfirm,prompt等关于界面的操作并不能直接返回对应的返回值。由于WKWebView的evaluateJavaScript是异步的，但改为同步执行的过程中出问题，目前仍未解决。其它部分经过测试并无问题。当然您可以选择使用evaluateJavaScript的方法代替stringByEvaluatingJavaScriptFromString的执行是完全没问题的。
