@@ -528,17 +528,19 @@ static NSString *originalUserAgent;
 #pragma mark - update nav items
 -(void)updateNavigationItems{
     //config navigation item
-    self.viewController.navigationItem.leftItemsSupplementBackButton = YES;
-    if (self.canGoBack) {
-        UIBarButtonItem *spaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-        spaceButtonItem.width = -6.5;
-        
-        self.navigationController.interactivePopGestureRecognizer.enabled = NO;
-        [self.viewController.navigationItem setLeftBarButtonItems:@[self.closeButtonItem] animated:NO];
-        
-    }else{
-        self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-        [self.navigationController.navigationItem setLeftBarButtonItems:nil];
+    if (!self.closeUpdateNavigationItems) {
+        self.viewController.navigationItem.leftItemsSupplementBackButton = YES;
+        if (self.canGoBack) {
+            UIBarButtonItem *spaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+            spaceButtonItem.width = -6.5;
+            
+            self.navigationController.interactivePopGestureRecognizer.enabled = NO;
+            [self.viewController.navigationItem setLeftBarButtonItems:@[self.closeButtonItem] animated:NO];
+            
+        }else{
+            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
+            [self.navigationController.navigationItem setLeftBarButtonItems:nil];
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 #RSWebView
-UIWebView和WKWebView的混合框架,UIWebView自动切换到WKWebView。
+UIWebView和WKWebView的混合框架,UIWebView自动切换到WKWebView，RSWebView当UIWebView直接使用。
 ##支持情况说明：
 * UIWebView在iOS8及以后自动切换到WKWebView
 * 支持设置html, url

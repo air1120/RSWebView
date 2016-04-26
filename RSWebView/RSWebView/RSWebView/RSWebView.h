@@ -76,6 +76,7 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 @property(assign, nonatomic) BOOL closeProgress;
 @property(assign, nonatomic) BOOL closeAdjustTitle;
 @property(assign, nonatomic) BOOL closeAdjustViewport;
+@property(assign, nonatomic) BOOL closeUpdateNavigationItems;
 #pragma mark - js交互部分
 - (void)registerHandler:(NSString *)handlerName handler:(WVJBHandler)handler;
 - (void)callHandler:(NSString *)handlerName;
