@@ -536,7 +536,6 @@ static NSString *originalUserAgent;
             
             self.navigationController.interactivePopGestureRecognizer.enabled = NO;
             [self.viewController.navigationItem setLeftBarButtonItems:@[self.closeButtonItem] animated:NO];
-            
         }else{
             self.navigationController.interactivePopGestureRecognizer.enabled = YES;
             [self.navigationController.navigationItem setLeftBarButtonItems:nil];
@@ -1046,9 +1045,6 @@ static NSString *originalUserAgent;
 -(void)setNavigationTitle{
     if (!self.closeAdjustTitle) {
         NSString *theTitle=[self stringByEvaluatingJavaScriptFromString:@"document.title"];
-        if (theTitle.length > 10) {
-            theTitle = [[theTitle substringToIndex:9] stringByAppendingString:@"…"];
-        }
         self.viewController.title = theTitle;
     }
 }
