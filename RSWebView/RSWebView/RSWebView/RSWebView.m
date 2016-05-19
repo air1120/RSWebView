@@ -517,7 +517,8 @@ static NSString *originalUserAgent;
     if ([lastRequest.URL.absoluteString isEqualToString:request.URL.absoluteString]) {
         return;
     }
-    UIView* currentSnapShotView = [self.realWebView snapshotViewAfterScreenUpdates:YES];
+//    UIView* currentSnapShotView = [self.realWebView snapshotViewAfterScreenUpdates:YES];
+    UIView *currentSnapShotView = [self currentWebViewImage];
     [self.snapShotsArray addObject:
      @{
        @"request":request,
@@ -525,6 +526,14 @@ static NSString *originalUserAgent;
        }
      ];
 }
+- (UIImageView *)currentWebViewImage{
+    UIGraphicsBeginImageContextWithOptions(((UIView *)self.realWebView).bounds.size, ((UIView *)self.realWebView).opaque, 0.0);
+    [((UIView *)self.realWebView).layer renderInContext:UIGraphicsGetCurrentContext() ];
+    UIImage *grab = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    return [[UIImageView alloc] initWithImage:grab];
+}
+
 #pragma mark - update nav items
 -(void)updateNavigationItems{
     //config navigation item
