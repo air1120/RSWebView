@@ -204,11 +204,11 @@ static NSString *originalUserAgent;
     }
 }
 // 记得取消监听
-//- (void)dealloc {
-//    if (_wKWebView) {
-//        [_wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
-//    }
-//}
+- (void)dealloc {
+    if (_wKWebView) {
+        [_wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
+    }
+}
 
 #pragma mark - Add NJKWebViewProgress And WebViewJavascriptBridge ----------------------------------
 
