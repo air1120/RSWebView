@@ -205,7 +205,7 @@ static NSString *originalUserAgent;
 }
 // 记得取消监听
 - (void)dealloc {
-    if (_wKWebView) {
+    if (_wKWebView&&!_closeProgress) {
         [_wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
     }
 }
