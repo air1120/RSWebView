@@ -205,7 +205,7 @@ static NSString *originalUserAgent;
 }
 // 记得取消监听
 - (void)dealloc {
-    if (_wKWebView&&!_closeProgress) {
+    if (_wKWebView) {
         [_wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
     }
 }
@@ -980,17 +980,12 @@ static NSString *originalUserAgent;
             _progressView.hidden = NO;
         }
     }else{
-        if (_closeProgress) {
-            [_wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
-        }else{
-            [_wKWebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
-        }
         self.progressViewForWKWebView.hidden = _closeProgress;
     }
 }
 -(void)setCloseGesture:(BOOL)closeGesture{
-    _closeProgress = closeGesture;
-    if (_closeProgress) {
+    _closeGesture = closeGesture;
+    if (_closeGesture) {
         self.swipePanGesture.enabled = NO;
     }
     else{
