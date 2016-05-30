@@ -537,7 +537,7 @@ static NSString *originalUserAgent;
 #pragma mark - update nav items
 -(void)updateNavigationItems{
     //config navigation item
-    if ((self.navigationController.navigationItem.leftBarButtonItem && self.navigationController.navigationItem.leftBarButtonItem != self.closeButtonItem)) {
+    if ((self.viewController.navigationItem.leftBarButtonItem && self.viewController.navigationItem.leftBarButtonItem != self.closeButtonItem)) {
         return;
     }
     if (!self.closeUpdateNavigationItems) {
