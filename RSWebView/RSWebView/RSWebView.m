@@ -537,6 +537,9 @@ static NSString *originalUserAgent;
 #pragma mark - update nav items
 -(void)updateNavigationItems{
     //config navigation item
+    if ((self.navigationController.navigationItem.leftBarButtonItem && self.navigationController.navigationItem.leftBarButtonItem != self.closeButtonItem)) {
+        return;
+    }
     if (!self.closeUpdateNavigationItems) {
         self.viewController.navigationItem.leftItemsSupplementBackButton = YES;
         if (self.canGoBack) {
