@@ -517,7 +517,7 @@ static NSString *originalUserAgent;
     if ([lastRequest.URL.absoluteString isEqualToString:request.URL.absoluteString]) {
         return;
     }
-//    UIView* currentSnapShotView = [self.realWebView snapshotViewAfterScreenUpdates:YES];
+    //    UIView* currentSnapShotView = [self.realWebView snapshotViewAfterScreenUpdates:YES];
     UIView *currentSnapShotView = [self currentWebViewImage];
     [self.snapShotsArray addObject:
      @{
@@ -543,13 +543,8 @@ static NSString *originalUserAgent;
     if (!self.closeUpdateNavigationItems) {
         self.viewController.navigationItem.leftItemsSupplementBackButton = YES;
         if (self.canGoBack) {
-            UIBarButtonItem *spaceButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-            spaceButtonItem.width = -6.5;
-            
-            self.navigationController.interactivePopGestureRecognizer.enabled = NO;
             [self.viewController.navigationItem setLeftBarButtonItems:@[self.closeButtonItem] animated:NO];
         }else{
-            self.navigationController.interactivePopGestureRecognizer.enabled = YES;
             [self.navigationController.navigationItem setLeftBarButtonItems:nil];
         }
     }
@@ -642,17 +637,17 @@ static NSString *originalUserAgent;
     }
     else
     {
-//        __block NSString* result = nil;
-//        __block BOOL isRunning = YES;
-//        dispatch_async(dispatch_get_main_queue(), ^{
-            [(WKWebView*)self.realWebView evaluateJavaScript:javaScriptString completionHandler:^(id obj, NSError *error) {
-//                result = obj;
-//                isRunning = NO;
-            }];
-//        });
-//        while (isRunning==YES) {
-//            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
-//        }
+        //        __block NSString* result = nil;
+        //        __block BOOL isRunning = YES;
+        //        dispatch_async(dispatch_get_main_queue(), ^{
+        [(WKWebView*)self.realWebView evaluateJavaScript:javaScriptString completionHandler:^(id obj, NSError *error) {
+            //                result = obj;
+            //                isRunning = NO;
+        }];
+        //        });
+        //        while (isRunning==YES) {
+        //            [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]];
+        //        }
         return nil;
     }
 }
