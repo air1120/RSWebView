@@ -131,8 +131,8 @@ static NSString *originalUserAgent;
         [self initWKWebViewWithFrame:frame];
     }
     self.userInteractionEnabled = YES;
-    [self addGestureRecognizer:self.swipePanGesture];
-    self.swipePanGesture.delegate = self;
+    
+    
     
     self.scalesPageToFit = YES;
     [self addSubview:self.realWebView];
@@ -143,6 +143,8 @@ static NSString *originalUserAgent;
     frame = CGRectMake(0, 0, frame.size.width, frame.size.height);
     UIWebView *webView =[[UIWebView alloc]initWithFrame:frame];
     _uIWebView = webView;
+    [self addGestureRecognizer:self.swipePanGesture];
+    self.swipePanGesture.delegate = self;
     self.realWebView = _uIWebView;
 }
 
@@ -156,6 +158,7 @@ static NSString *originalUserAgent;
     webView.UIDelegate = self;
     webView.navigationDelegate = self;
     webView.backgroundColor = [UIColor clearColor];
+    webView.allowsBackForwardNavigationGestures = YES;
     webView.opaque = NO;
     NSAssert(webView != nil, @"请导入WebKit.framework");
     _wKWebView = webView;
@@ -264,7 +267,7 @@ static NSString *originalUserAgent;
 {
     self.loadCount --;
     [self callback_webViewDidFailLoadWithError:error];
-    NSLog(@"请求失败:%@",error);
+    //    NSLog(@"请求失败:%@",error);
     if (error.code == -1009) {
         [[[UIAlertView alloc]initWithTitle:nil message:@"请检查当前网络问题" delegate:self cancelButtonTitle:NSLocalizedStringFromTable(@"Comfirm",@"RSWebView", nil) otherButtonTitles:nil, nil]show];
     }
@@ -378,6 +381,11 @@ static NSString *originalUserAgent;
 
 #pragma mark- WKNavigationDelegate
 
+- (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
+    [self updateGestureState];
+    [self updateNavigationItems];
+}
+
 -(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
 {
     switch (navigationAction.navigationType) {
@@ -432,6 +440,7 @@ static NSString *originalUserAgent;
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     [self actionAfterFinish];
+    [self updateGestureState];
     [self callback_webView:webView didFinishNavigation:navigation];
 }
 
@@ -458,6 +467,7 @@ static NSString *originalUserAgent;
 {
     self.loadCount --;
     [self actionAfterFinish];
+    [self updateGestureState];
     if(self.delegate&&[self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
     {
         [self.delegate webViewDidFinishLoad:self.realWebView];
@@ -534,7 +544,15 @@ static NSString *originalUserAgent;
     return [[UIImageView alloc] initWithImage:grab];
 }
 
+
 #pragma mark - update nav items
+
+-(void)updateGestureState{
+    if (!self.closeGesture) {
+        self.navigationController.interactivePopGestureRecognizer.enabled = ![self.realWebView canGoBack];
+    }
+}
+
 -(void)updateNavigationItems{
     //config navigation item
     if ((self.viewController.navigationItem.leftBarButtonItem && self.viewController.navigationItem.leftBarButtonItem != self.closeButtonItem)) {
@@ -545,7 +563,7 @@ static NSString *originalUserAgent;
         if (self.canGoBack) {
             [self.viewController.navigationItem setLeftBarButtonItems:@[self.closeButtonItem] animated:NO];
         }else{
-            [self.navigationController.navigationItem setLeftBarButtonItems:nil];
+            [self.viewController.navigationItem setLeftBarButtonItems:nil];
         }
     }
 }
@@ -983,12 +1001,12 @@ static NSString *originalUserAgent;
 }
 -(void)setCloseGesture:(BOOL)closeGesture{
     _closeGesture = closeGesture;
-    if (_closeGesture) {
-        self.swipePanGesture.enabled = NO;
+    if(_isUsingUIWebView){
+        self.swipePanGesture.enabled = !_closeGesture;
+    }else{
+        _wKWebView.allowsBackForwardNavigationGestures = !_closeGesture;
     }
-    else{
-        self.swipePanGesture.enabled = YES;
-    }
+    
 }
 -(UIBarButtonItem*)closeButtonItem{
     if (!_closeButtonItem) {
@@ -1034,7 +1052,7 @@ static NSString *originalUserAgent;
             [self loadHTMLString:webSource.html baseURL:[NSURL URLWithString:webSource.baseURL]];
         }
         else{
-            NSLog(@"the url is +++---+++ %@",webSource.url);
+            //            NSLog(@"the url is +++---+++ %@",webSource.url);
             NSURL * _url = [NSURL URLWithString:webSource.url];
             NSMutableURLRequest * request = [NSMutableURLRequest requestWithURL:_url cachePolicy:NSURLRequestReloadIgnoringCacheData timeoutInterval:30];
             [request setAllHTTPHeaderFields:webSource.headers];
