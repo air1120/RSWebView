@@ -13,7 +13,9 @@
 #import "WebViewJavascriptBridge.h"
 #import "WKWebViewJavascriptBridge.h"
 NS_ASSUME_NONNULL_BEGIN
-
+@protocol RSWebViewNavigationDelegate <NSObject>
+- (void)webViewUpdateNavigation:(UIView *)webView;
+@end
 @class RSWebView;
 typedef enum {
     RSWebViewTypeDefault,//ios7及之前是UIWebView,ios8之后自动转WkWebView
@@ -38,7 +40,7 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 
 @property (nonatomic, strong) id realWebView;
 
-@property (nullable, nonatomic, weak) id <UIWebViewDelegate,WKNavigationDelegate> delegate;
+@property (nullable, nonatomic, weak) id <UIWebViewDelegate,WKNavigationDelegate,RSWebViewNavigationDelegate> delegate;
 
 @property (nonatomic, strong) UIScrollView *scrollView ;
 
@@ -76,7 +78,7 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 @property(assign, nonatomic) BOOL closeProgress;
 @property(assign, nonatomic) BOOL closeAdjustTitle;
 @property(assign, nonatomic) BOOL closeAdjustViewport;
-@property(assign, nonatomic) BOOL closeUpdateNavigationItems;
+//@property(assign, nonatomic) BOOL closeUpdateNavigationItems;
 #pragma mark - js交互部分
 - (void)registerHandler:(NSString *)handlerName handler:(WVJBHandler)handler;
 - (void)callHandler:(NSString *)handlerName;

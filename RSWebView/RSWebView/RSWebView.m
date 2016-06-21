@@ -116,13 +116,13 @@ static NSString *originalUserAgent;
     _isUsingUIWebView = !IOS8x;
     switch (webViewType) {
         case RSWebViewTypeUIWebView:
-            _isUsingUIWebView = YES;
-            break;
+        _isUsingUIWebView = YES;
+        break;
         case RSWebViewTypeWkWebView:
-            _isUsingUIWebView = NO;
-            break;
+        _isUsingUIWebView = NO;
+        break;
         default:
-            break;
+        break;
     }
     
     if (_isUsingUIWebView) {
@@ -383,7 +383,7 @@ static NSString *originalUserAgent;
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
     [self updateGestureState];
-    [self updateNavigationItems];
+    [self updateNavigation];
 }
 
 -(void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler
@@ -477,7 +477,7 @@ static NSString *originalUserAgent;
     [self fixViewport];
     [self setNavigationTitle];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-    [self updateNavigationItems];
+    [self updateNavigation];
 }
 - (void)fixViewport{
     if (!self.closeAdjustViewport) {
@@ -512,7 +512,7 @@ static NSString *originalUserAgent;
         }
         resultBOOL = [self.delegate webView:self.realWebView shouldStartLoadWithRequest:request navigationType:navigationType];
     }
-    [self updateNavigationItems];
+    [self updateNavigation];
     return resultBOOL;
 }
 #pragma mark - logic of push and pop snap shot views
@@ -553,19 +553,21 @@ static NSString *originalUserAgent;
     }
 }
 
--(void)updateNavigationItems{
-    //config navigation item
-    if ((self.viewController.navigationItem.leftBarButtonItem && self.viewController.navigationItem.leftBarButtonItem != self.closeButtonItem)) {
-        return;
+-(void)updateNavigation{
+    if ([self.delegate respondsToSelector:@selector(webViewUpdateNavigation:)]) {
+        [self.delegate webViewUpdateNavigation:self.realWebView];
     }
-    if (!self.closeUpdateNavigationItems) {
-        self.viewController.navigationItem.leftItemsSupplementBackButton = YES;
-        if (self.canGoBack) {
-            [self.viewController.navigationItem setLeftBarButtonItems:@[self.closeButtonItem] animated:NO];
-        }else{
-            [self.viewController.navigationItem setLeftBarButtonItems:nil];
-        }
-    }
+    //    if ((self.viewController.navigationItem.leftBarButtonItem && self.viewController.navigationItem.leftBarButtonItem != self.closeButtonItem)) {
+    //        return;
+    //    }
+    //    if (!self.closeUpdateNavigationItems) {
+    //        self.viewController.navigationItem.leftItemsSupplementBackButton = YES;
+    //        if (self.canGoBack) {
+    //            [self.viewController.navigationItem setLeftBarButtonItems:@[self.closeButtonItem] animated:NO];
+    //        }else{
+    //            [self.viewController.navigationItem setLeftBarButtonItems:nil];
+    //        }
+    //    }
 }
 
 #pragma mark - UIWebView和WKWebView公有部分处理
