@@ -76,7 +76,7 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 #pragma mark - 开关设置
 @property(assign, nonatomic) BOOL closeGesture;
 @property(assign, nonatomic) BOOL closeProgress;
-@property(assign, nonatomic) BOOL closeAdjustTitle;
+//@property(assign, nonatomic) BOOL closeAdjustTitle;
 @property(assign, nonatomic) BOOL closeAdjustViewport;
 //@property(assign, nonatomic) BOOL closeUpdateNavigationItems;
 #pragma mark - js交互部分

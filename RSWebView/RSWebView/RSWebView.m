@@ -475,7 +475,7 @@ static NSString *originalUserAgent;
 }
 -(void)actionAfterFinish{
     [self fixViewport];
-    [self setNavigationTitle];
+//    [self setNavigationTitle];
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
     [self updateNavigation];
 }
@@ -1064,12 +1064,12 @@ static NSString *originalUserAgent;
         }
     }
 }
--(void)setNavigationTitle{
-    if (!self.closeAdjustTitle) {
-        NSString *theTitle=[self stringByEvaluatingJavaScriptFromString:@"document.title"];
-        self.viewController.title = theTitle;
-    }
-}
+//-(void)setNavigationTitle{
+//    if (!self.closeAdjustTitle) {
+//        NSString *theTitle=[self stringByEvaluatingJavaScriptFromString:@"document.title"];
+//        self.viewController.title = theTitle;
+//    }
+//}
 -(void)loadLocalFile:(NSString *)fileName baseURL:(NSString *)baseURL{
     NSString *fullPath = [self fullPathWithFileName:fileName];
     NSString *data = [[NSString alloc]initWithContentsOfFile:fullPath encoding:NSUTF8StringEncoding error:nil];
