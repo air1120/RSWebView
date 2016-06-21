@@ -382,7 +382,7 @@ static NSString *originalUserAgent;
 #pragma mark- WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(null_unspecified WKNavigation *)navigation{
-    [self updateGestureState];
+//    [self updateGestureState];
     [self updateNavigation];
 }
 
@@ -440,7 +440,7 @@ static NSString *originalUserAgent;
 -(void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
 {
     [self actionAfterFinish];
-    [self updateGestureState];
+//    [self updateGestureState];
     [self callback_webView:webView didFinishNavigation:navigation];
 }
 
@@ -467,7 +467,7 @@ static NSString *originalUserAgent;
 {
     self.loadCount --;
     [self actionAfterFinish];
-    [self updateGestureState];
+//    [self updateGestureState];
     if(self.delegate&&[self.delegate respondsToSelector:@selector(webViewDidFinishLoad:)])
     {
         [self.delegate webViewDidFinishLoad:self.realWebView];
@@ -547,11 +547,11 @@ static NSString *originalUserAgent;
 
 #pragma mark - update nav items
 
--(void)updateGestureState{
-    if (!self.closeGesture) {
-        self.navigationController.interactivePopGestureRecognizer.enabled = ![self.realWebView canGoBack];
-    }
-}
+//-(void)updateGestureState{
+//    if (!self.closeGesture) {
+//        self.navigationController.interactivePopGestureRecognizer.enabled = ![self.realWebView canGoBack];
+//    }
+//}
 
 -(void)updateNavigation{
     if ([self.delegate respondsToSelector:@selector(webViewUpdateNavigation:)]) {
@@ -852,9 +852,9 @@ static NSString *originalUserAgent;
 }
 
 #pragma mark - events handler
--(void)closeItemClicked{
-    [self.navigationController popViewControllerAnimated:YES];
-}
+//-(void)closeItemClicked{
+//    [self.navigationController popViewControllerAnimated:YES];
+//}
 -(void)swipePanGestureHandler:(UIScreenEdgePanGestureRecognizer*)gesture{
     
     CGPoint translation = [gesture translationInView:self];
@@ -1008,14 +1008,13 @@ static NSString *originalUserAgent;
     }else{
         _wKWebView.allowsBackForwardNavigationGestures = !_closeGesture;
     }
-    
 }
--(UIBarButtonItem*)closeButtonItem{
-    if (!_closeButtonItem) {
-        _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"close",@"RSWebView", nil)  style:UIBarButtonItemStylePlain target:self action:@selector(closeItemClicked)];
-    }
-    return _closeButtonItem;
-}
+//-(UIBarButtonItem*)closeButtonItem{
+//    if (!_closeButtonItem) {
+//        _closeButtonItem = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedStringFromTable(@"close",@"RSWebView", nil)  style:UIBarButtonItemStylePlain target:self action:@selector(closeItemClicked)];
+//    }
+//    return _closeButtonItem;
+//}
 - (UIViewController *)viewController {
     for (UIView* next = [self superview]; next; next = next.superview) {
         UIResponder *nextResponder = [next nextResponder];
@@ -1025,14 +1024,14 @@ static NSString *originalUserAgent;
     }
     return nil;
 }
--(UINavigationController *)navigationController{
-    if ([self.viewController isKindOfClass:[UINavigationController class]]) {
-        return (UINavigationController *)self.viewController;
-    }
-    else{
-        return self.viewController.navigationController;
-    }
-}
+//-(UINavigationController *)navigationController{
+//    if ([self.viewController isKindOfClass:[UINavigationController class]]) {
+//        return (UINavigationController *)self.viewController;
+//    }
+//    else{
+//        return self.viewController.navigationController;
+//    }
+//}
 +(void)setUserAgent:(NSString *)userAgent{
     if(userAgent!=nil){
         if (!originalUserAgent) {

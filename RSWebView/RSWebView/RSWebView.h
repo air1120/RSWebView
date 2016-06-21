@@ -85,5 +85,6 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 - (void)callHandler:(NSString *)handlerName data:(id)data;
 - (void)callHandler:(NSString *)handlerName data:(id)data responseCallback:(WVJBResponseCallback)responseCallback;
 +(void)setWebViewType:(RSWebViewType )type;
+-(void)updateNavigation;
 @end
 NS_ASSUME_NONNULL_END
