@@ -1006,7 +1006,10 @@ static NSString *originalUserAgent;
     if(_isUsingUIWebView){
         self.swipePanGesture.enabled = !_closeGesture;
     }else{
-        _wKWebView.allowsBackForwardNavigationGestures = !_closeGesture;
+        //ios8下allowsBackForwardNavigationGestures不能从YES转为NO
+        if(NSFoundationVersionNumber > NSFoundationVersionNumber_iOS_8_4){
+            _wKWebView.allowsBackForwardNavigationGestures = !_closeGesture;
+        }
     }
 }
 //-(UIBarButtonItem*)closeButtonItem{
