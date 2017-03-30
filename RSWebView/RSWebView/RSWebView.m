@@ -307,6 +307,9 @@ static NSString *originalUserAgent;
         if (self.trustedScheme && ![self.trustedScheme containsObject:url.scheme]) {
             return NO;
         }
+        if (self.unTrustedScheme && [self.unTrustedScheme containsObject:url.scheme]) {
+            return NO;
+        }
     }
     // iTunes: App Store link
     if ([self validateItunesUrl:urlString]) {
@@ -416,6 +419,9 @@ static NSString *originalUserAgent;
     else if (![self validateHttpOrHttps:urlString]) {
         decisionHandler(WKNavigationActionPolicyCancel);
         if (self.trustedScheme && ![self.trustedScheme containsObject:url.scheme]) {
+            return;
+        }
+        if (self.unTrustedScheme && [self.unTrustedScheme containsObject:url.scheme]) {
             return;
         }
         [[UIApplication sharedApplication] openURL:url];

@@ -42,10 +42,10 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 
 @property (nullable, nonatomic, weak) id <UIWebViewDelegate,WKNavigationDelegate,RSWebViewNavigationDelegate> delegate;
 
-@property (nonatomic, strong) UIScrollView *scrollView ;
+@property (nonatomic, strong) UIScrollView *scrollView;
 
-@property (nonatomic, strong) NSArray *trustedScheme;
-
+@property (nonatomic, strong) NSArray *trustedScheme;//白名单，就是只打开的scheme
+@property (nonatomic, strong) NSArray *unTrustedScheme;//黑名单，就是不打开的scheme
 
 - (void)loadRequest:(NSURLRequest *)request;
 - (void)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;
