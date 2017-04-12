@@ -15,7 +15,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol RSWebViewNavigationDelegate <NSObject>
 - (void)webViewUpdateNavigation:(UIView *)webView;
-- (void)webViewActionForUrl:(NSString *)url whenRegularExpression:(NSString *)urlRegularExpression;//捕获url
+- (void)webViewHandleForCapturedUrl:(NSString *)url withRegularExpression:(NSString *)urlRegularExpression;//捕获url
 @end
 @class RSWebView;
 typedef enum {
