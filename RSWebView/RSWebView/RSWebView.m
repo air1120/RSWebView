@@ -316,7 +316,9 @@ static NSString *originalUserAgent;
                 NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
                 NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
                 if (range.location != NSNotFound) {
-                    [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
+                    if ([self.delegate respondsToSelector:@selector(webViewActionForUrl:whenRegularExpression:)]) {
+                        [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
+                    }
                     return NO;
                 }
             }
@@ -445,7 +447,9 @@ static NSString *originalUserAgent;
                 NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
                 NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
                 if (range.location != NSNotFound) {
-                    [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
+                    if ([self.delegate respondsToSelector:@selector(webViewActionForUrl:whenRegularExpression:)]) {
+                        [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
+                    }
                     return ;
                 }
             }
