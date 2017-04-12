@@ -310,12 +310,27 @@ static NSString *originalUserAgent;
         if (self.unTrustedScheme && [self.unTrustedScheme containsObject:url.scheme]) {
             return NO;
         }
+        NSInteger count = [self.captureUrlRegularExpressions count];
+        if (self.captureUrlRegularExpressions&&count>0) {
+            for (int i = 0; i< count; i++) {
+                NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
+                NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
+                if (range.location != NSNotFound) {
+                    [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
+                    return NO;
+                }
+            }
+        }
     }
+    
     // iTunes: App Store link
     if ([self validateItunesUrl:urlString]) {
         [[UIApplication sharedApplication] openURL:url];
         return YES;
     }
+    
+    
+    
     BOOL resultBOOL = [self callback_webViewShouldStartLoadWithRequest:request navigationType:navigationType];
     return resultBOOL;
 }
@@ -424,6 +439,18 @@ static NSString *originalUserAgent;
         if (self.unTrustedScheme && [self.unTrustedScheme containsObject:url.scheme]) {
             return;
         }
+        NSInteger count = [self.captureUrlRegularExpressions count];
+        if (self.captureUrlRegularExpressions&&count>0) {
+            for (int i = 0; i< count; i++) {
+                NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
+                NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
+                if (range.location != NSNotFound) {
+                    [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
+                    return ;
+                }
+            }
+        }
+        
         [[UIApplication sharedApplication] openURL:url];
         return;
     }

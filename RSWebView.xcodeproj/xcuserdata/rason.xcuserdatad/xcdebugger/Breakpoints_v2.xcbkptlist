@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RSWebView/RSWebView/RSWebView.m"
-            timestampString = "488168200.856978"
+            timestampString = "513659055.913582"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "1199"
-            endingLineNumber = "1199">
+            startingLineNumber = "1226"
+            endingLineNumber = "1226">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

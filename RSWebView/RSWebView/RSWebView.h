@@ -15,6 +15,7 @@
 NS_ASSUME_NONNULL_BEGIN
 @protocol RSWebViewNavigationDelegate <NSObject>
 - (void)webViewUpdateNavigation:(UIView *)webView;
+- (void)webViewActionForUrl:(NSString *)url whenRegularExpression:(NSString *)urlRegularExpression;//捕获url
 @end
 @class RSWebView;
 typedef enum {
@@ -46,6 +47,7 @@ static RSWebViewType webViewType = RSWebViewTypeDefault;
 
 @property (nonatomic, strong) NSArray *trustedScheme;//白名单，就是只打开的scheme
 @property (nonatomic, strong) NSArray *unTrustedScheme;//黑名单，就是不打开的scheme
+@property (nonatomic, strong) NSArray *captureUrlRegularExpressions;//捕获事件不跳转,回调webViewActionForUrl方法
 
 - (void)loadRequest:(NSURLRequest *)request;
 - (void)loadHTMLString:(NSString *)string baseURL:(nullable NSURL *)baseURL;
