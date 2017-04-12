@@ -302,6 +302,22 @@ static NSString *originalUserAgent;
     }
     NSURL *url = request.URL;
     NSString *urlString = (url) ? url.absoluteString : @"";
+    
+    //url拦截
+    NSInteger count = [self.captureUrlRegularExpressions count];
+    if (self.captureUrlRegularExpressions&&count>0) {
+        for (int i = 0; i< count; i++) {
+            NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
+            NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
+            if (range.location != NSNotFound) {
+                if ([self.delegate respondsToSelector:@selector(webViewActionForUrl:whenRegularExpression:)]) {
+                    [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
+                }
+                return NO;
+            }
+        }
+    }
+    
     //判断scheme是不是可以访问
     if (![self validateHttpOrHttps:urlString]) {
         if (self.trustedScheme && ![self.trustedScheme containsObject:url.scheme]) {
@@ -309,19 +325,6 @@ static NSString *originalUserAgent;
         }
         if (self.unTrustedScheme && [self.unTrustedScheme containsObject:url.scheme]) {
             return NO;
-        }
-        NSInteger count = [self.captureUrlRegularExpressions count];
-        if (self.captureUrlRegularExpressions&&count>0) {
-            for (int i = 0; i< count; i++) {
-                NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
-                NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
-                if (range.location != NSNotFound) {
-                    if ([self.delegate respondsToSelector:@selector(webViewActionForUrl:whenRegularExpression:)]) {
-                        [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
-                    }
-                    return NO;
-                }
-            }
         }
     }
     
@@ -420,8 +423,25 @@ static NSString *originalUserAgent;
         }
     }
     
+    
     NSURL *url = navigationAction.request.URL;
     NSString *urlString = (url) ? url.absoluteString : @"";
+    
+    //url拦截
+    NSInteger count = [self.captureUrlRegularExpressions count];
+    if (self.captureUrlRegularExpressions&&count>0) {
+        for (int i = 0; i< count; i++) {
+            NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
+            NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
+            if (range.location != NSNotFound) {
+                if ([self.delegate respondsToSelector:@selector(webViewActionForUrl:whenRegularExpression:)]) {
+                    [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
+                }
+                return ;
+            }
+        }
+    }
+    
     if ([@"about:blank" isEqualToString:urlString] || (urlString.length>=7&&[@"file" isEqualToString:[urlString substringToIndex:4]])) {
         
     }
@@ -440,19 +460,6 @@ static NSString *originalUserAgent;
         }
         if (self.unTrustedScheme && [self.unTrustedScheme containsObject:url.scheme]) {
             return;
-        }
-        NSInteger count = [self.captureUrlRegularExpressions count];
-        if (self.captureUrlRegularExpressions&&count>0) {
-            for (int i = 0; i< count; i++) {
-                NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
-                NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
-                if (range.location != NSNotFound) {
-                    if ([self.delegate respondsToSelector:@selector(webViewActionForUrl:whenRegularExpression:)]) {
-                        [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
-                    }
-                    return ;
-                }
-            }
         }
         
         [[UIApplication sharedApplication] openURL:url];
