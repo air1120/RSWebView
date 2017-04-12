@@ -305,7 +305,7 @@ static NSString *originalUserAgent;
     
     //url拦截
     NSInteger count = [self.captureUrlRegularExpressions count];
-    if (self.captureUrlRegularExpressions&&count>0) {
+    if ([self validateHttpOrHttps:urlString] && self.captureUrlRegularExpressions&&count>0) {
         for (int i = 0; i< count; i++) {
             NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
             NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
@@ -429,7 +429,7 @@ static NSString *originalUserAgent;
     
     //url拦截
     NSInteger count = [self.captureUrlRegularExpressions count];
-    if (self.captureUrlRegularExpressions&&count>0) {
+    if ([self validateHttpOrHttps:urlString] && self.captureUrlRegularExpressions&&count>0) {
         for (int i = 0; i< count; i++) {
             NSString *captureUrlRegularExpression = self.captureUrlRegularExpressions[i];
             NSRange range = [urlString rangeOfString:captureUrlRegularExpression options:NSRegularExpressionSearch];
@@ -437,6 +437,7 @@ static NSString *originalUserAgent;
                 if ([self.delegate respondsToSelector:@selector(webViewActionForUrl:whenRegularExpression:)]) {
                     [self.delegate webViewActionForUrl:urlString whenRegularExpression:captureUrlRegularExpression];
                 }
+                decisionHandler(WKNavigationActionPolicyCancel);
                 return ;
             }
         }
