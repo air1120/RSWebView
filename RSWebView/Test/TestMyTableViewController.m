@@ -24,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
-    //    [RSWebView setWebViewType:RSWebViewTypeUIWebView];
+    [RSWebView setWebViewType:RSWebViewTypeUIWebView];
     ex = [[Example alloc]init];
     ex.viewController = self;
     webView = [[RSWebView alloc]initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 300)];

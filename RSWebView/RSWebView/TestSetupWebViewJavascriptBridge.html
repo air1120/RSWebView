@@ -14,7 +14,7 @@
     setupWebViewJavascriptBridge(function(bridge) {
                                  /* Initialize your app here */
                                  bridge.registerHandler('JS Echo', function(data, responseCallback) {
-                                                        console.log("JS Echo called with:", data)
+                                                        alert("JS Echo called with:" + data);
                                                         responseCallback(data)
                                                         })
                                  
